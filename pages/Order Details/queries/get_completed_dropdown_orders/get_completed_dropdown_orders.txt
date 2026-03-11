@@ -1,0 +1,4 @@
+SELECT order_no AS label, order_no AS value 
+FROM export_orders 
+WHERE status = 'Completed' 
+ORDER BY order_no ASC;

@@ -1,0 +1,50 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 11,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonVariant": "PRIMARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "yp4yann39w",
+  "leftColumn": 15,
+  "minWidth": 120,
+  "mobileBottomRow": 12,
+  "mobileLeftColumn": 15,
+  "mobileRightColumn": 31,
+  "mobileTopRow": 8,
+  "needsErrorInfo": false,
+  "onClick": "{{log_folding.run().then(() => {\n  get_folding_history.run();\n  resetWidget(\"fold_qty\", true);\n  setInterval(() => {}, 1000, '');\n  get_all_orders.run();\n  get_active_orders.run();\n});}}",
+  "parentColumnSpace": 5.41796875,
+  "parentId": "2jj276073f",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 47,
+  "text": "Log Folding",
+  "topRow": 7,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "zg0pmqghl1",
+  "widgetName": "Button3"
+}

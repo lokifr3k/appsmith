@@ -1,0 +1,3 @@
+SELECT DISTINCT color AS label, color AS value 
+FROM export_orders 
+WHERE color IS NOT NULL AND status != 'Completed';

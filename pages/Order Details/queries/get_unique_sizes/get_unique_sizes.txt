@@ -1,0 +1,3 @@
+SELECT DISTINCT item_size AS label, item_size AS value 
+FROM export_orders 
+WHERE item_size IS NOT NULL AND status != 'Completed';

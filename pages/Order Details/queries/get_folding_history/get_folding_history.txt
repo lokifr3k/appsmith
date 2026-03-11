@@ -1,0 +1,5 @@
+SELECT log_date AS "Date", qty AS "Quantity" 
+FROM order_logs 
+WHERE order_no = {{sel_edit_order.selectedOptionValue}} 
+AND activity_type = 'Folded' 
+ORDER BY log_date DESC;

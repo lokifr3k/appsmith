@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS order_logs (
+    id SERIAL PRIMARY KEY,
+    order_no VARCHAR(50) REFERENCES export_orders(order_no),
+    log_date DATE,
+    activity_type VARCHAR(50), 
+    qty INT
+);

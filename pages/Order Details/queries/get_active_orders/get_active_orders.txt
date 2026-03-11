@@ -1,0 +1,5 @@
+SELECT * FROM export_orders 
+WHERE status != 'Completed'
+AND item_size ILIKE '%' || '{{sel_filter_size.selectedOptionValue || ""}}' || '%'
+AND color ILIKE '%' || '{{sel_filter_color.selectedOptionValue || ""}}' || '%'
+ORDER BY order_no ASC;

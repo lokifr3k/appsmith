@@ -1,0 +1,5 @@
+-- 1. Delete the attached history logs first to satisfy the database safety rules
+DELETE FROM order_logs WHERE order_no = '{{sel_edit_order.selectedOptionValue}}';
+
+-- 2. Delete the actual order from the main table
+DELETE FROM export_orders WHERE order_no = '{{sel_edit_order.selectedOptionValue}}';

@@ -1,0 +1,16 @@
+-- 1. Save the history record
+INSERT INTO order_logs (order_no, log_date, activity_type, qty)
+VALUES (
+    '{{sel_edit_order.selectedOptionValue}}', 
+    '{{fold_date.formattedDate}}', 
+    'Folded', 
+    {{fold_qty.text || 0}}
+);
+
+-- 2. Update folded_qty and extra_pcs ONLY. 
+-- (The database will auto-calculate stock and balance for you!)
+UPDATE export_orders
+SET 
+    folded_qty = COALESCE(folded_qty, 0) + {{fold_qty.text || 0}},
+    extra_pcs = GREATEST(0, (COALESCE(folded_qty, 0) + {{fold_qty.text || 0}}) - ordered_qty)
+WHERE order_no = '{{sel_edit_order.selectedOptionValue}}';

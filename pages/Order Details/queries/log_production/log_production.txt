@@ -1,0 +1,11 @@
+INSERT INTO order_logs (order_no, log_date, activity_type, qty)
+VALUES (
+    '{{sel_edit_order.selectedOptionValue}}', 
+    '{{prod_date.formattedDate}}', 
+    'Produced', 
+    {{prod_qty.text || 0}}
+);
+
+UPDATE export_orders
+SET produced_qty = COALESCE(produced_qty, 0) + {{prod_qty.text || 0}}
+WHERE order_no = '{{sel_edit_order.selectedOptionValue}}';
