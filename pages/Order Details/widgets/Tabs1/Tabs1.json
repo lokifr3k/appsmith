@@ -114,7 +114,11 @@
     }
   ],
   "dynamicHeight": "AUTO_HEIGHT",
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onTabSelected"
+    }
+  ],
   "flexVerticalAlignment": "stretch",
   "isCanvas": true,
   "isLoading": false,
@@ -129,6 +133,7 @@
   "mobileRightColumn": 24,
   "mobileTopRow": 10,
   "needsErrorInfo": false,
+  "onTabSelected": "{{get_completed_dropdown_orders.run()}}",
   "originalBottomRow": 75,
   "originalTopRow": 7,
   "parentColumnSpace": 18.96875,

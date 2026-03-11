@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "UPDATE export_orders \nSET \n    sent_qty = COALESCE(sent_qty, 0) + {{this.params.qty}},\n    invoice_details = CONCAT_WS(', ', invoice_details, 'Inv: ' || '{{inp_invoice_no.text}}' || ' (' || '{{inp_invoice_date.formattedDate}}' || ')')\nWHERE order_no = '{{this.params.order_no}}';",
+      "body": "UPDATE export_orders \nSET \n    sent_qty = COALESCE(sent_qty, 0) + {{this.params.qty}},\n    invoice_details = CONCAT_WS(', ', invoice_details, 'Inv: ' || '{{inp_invoice_no.text}}' || ' (' || '{{inp_invoice_date.formattedDate}}' || ') - Qty: ' || {{this.params.qty}})\nWHERE order_no = '{{this.params.order_no}}';",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

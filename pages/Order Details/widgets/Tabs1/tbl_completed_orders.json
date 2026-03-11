@@ -46,9 +46,10 @@
     "folded_qty",
     "stock_qty",
     "balance_qty",
-    "instructions"
+    "instructions",
+    "invoice_details"
   ],
-  "columnUpdatedAt": 1773149818293,
+  "columnUpdatedAt": 1773229430547,
   "columnWidthMap": {},
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -115,6 +116,9 @@
     },
     {
       "key": "primaryColumns.instructions.computedValue"
+    },
+    {
+      "key": "primaryColumns.invoice_details.computedValue"
     }
   ],
   "dynamicPropertyPathList": [],
@@ -329,6 +333,40 @@
       "notation": "standard",
       "originalId": "instructions",
       "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "invoice_details": {
+      "alias": "invoice_details",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = tbl_completed_orders.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"invoice_details\"])) : invoice_details })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "invoice_details",
+      "index": 15,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "invoice_details",
+      "notation": "standard",
+      "originalId": "invoice_details",
+      "sticky": "",
+      "textColor": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},
