@@ -58,9 +58,6 @@
       "key": "boxShadow"
     },
     {
-      "key": "tableData"
-    },
-    {
       "key": "primaryColumns.order_no.computedValue"
     },
     {
@@ -68,6 +65,9 @@
     },
     {
       "key": "primaryColumns.original_text.computedValue"
+    },
+    {
+      "key": "tableData"
     }
   ],
   "dynamicPropertyPathList": [
@@ -203,7 +203,7 @@
   "rightColumn": 40,
   "searchKey": "",
   "serverSidePaginationEnabled": true,
-  "tableData": "{{\n  (inp_shipping_paste.text || \"\").split('\\n').filter(row => row.trim() !== \"\").map(row => {\n    // Split the row by any spaces or tabs\n    let tokens = row.trim().split(/[\\s\\t]+/); \n    \n    // Read from the end of the sentence to find Qty and Order No\n    let qty = parseInt(tokens[tokens.length - 3], 10) || 0; \n    let order_no = tokens[tokens.length - 4] || \"\";\n\n    return {\n      order_no: order_no.toString(),\n      qty: qty,\n      original_text: row // Keeps the raw text just in case you need to double-check it\n    };\n  })\n}}",
+  "tableData": "{{\n  (inp_shipping_paste.text || \"\").split('\\n')\n  .filter(row => row.trim() !== \"\")\n  .filter((row, index, self) => self.indexOf(row) === index) // <-- The new magic deduplicator!\n  .map(row => {\n    let tokens = row.trim().split(/[\\s\\t]+/); \n    \n    let qty = parseInt(tokens[tokens.length - 3], 10) || 0; \n    let order_no = tokens[tokens.length - 4] || \"\";\n\n    return {\n      order_no: order_no.toString(),\n      qty: qty,\n      original_text: row \n    };\n  })\n}}",
   "textSize": "0.875rem",
   "topRow": 14,
   "totalRecordsCount": 0,
