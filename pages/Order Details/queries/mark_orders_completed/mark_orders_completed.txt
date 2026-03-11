@@ -1,0 +1,3 @@
+UPDATE export_orders 
+SET status = 'Completed' 
+WHERE balance_qty <= 0 AND stock_qty <= 0 AND status != 'Completed';

@@ -109,7 +109,7 @@
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table2.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"order_no\"])) : order_no })()}}",
+      "computedValue": "{{(() => { const tableData = tbl_shipping_preview.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"order_no\"])) : order_no })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -140,7 +140,7 @@
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = Table2.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"original_text\"])) : original_text })()}}",
+      "computedValue": "{{(() => { const tableData = tbl_shipping_preview.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"original_text\"])) : original_text })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -171,7 +171,7 @@
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "number",
-      "computedValue": "{{(() => { const tableData = Table2.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"qty\"])) : qty })()}}",
+      "computedValue": "{{(() => { const tableData = tbl_shipping_preview.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"qty\"])) : qty })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -211,5 +211,5 @@
   "version": 2,
   "verticalAlignment": "CENTER",
   "widgetId": "1rsdc597nr",
-  "widgetName": "Table2"
+  "widgetName": "tbl_shipping_preview"
 }
