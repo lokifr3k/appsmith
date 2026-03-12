@@ -7,7 +7,6 @@
   "closeOnSelection": true,
   "dateFormat": "YYYY-MM-DD",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "2026-03-12T12:36:29.685Z",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
