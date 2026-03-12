@@ -1,0 +1,15 @@
+UPDATE export_orders
+SET
+    produced_qty = CASE 
+        WHEN '{{tbl_all_logs.triggeredRow.activity_type}}' = 'Produced' 
+        THEN COALESCE(produced_qty, 0) - {{tbl_all_logs.triggeredRow.qty}} 
+        ELSE produced_qty 
+    END,
+    folded_qty = CASE 
+        WHEN '{{tbl_all_logs.triggeredRow.activity_type}}' = 'Folded' 
+        THEN COALESCE(folded_qty, 0) - {{tbl_all_logs.triggeredRow.qty}} 
+        ELSE folded_qty 
+    END
+WHERE order_no = '{{tbl_all_logs.triggeredRow.order_no}}';
+
+DELETE FROM order_logs WHERE id = {{tbl_all_logs.triggeredRow.id}};

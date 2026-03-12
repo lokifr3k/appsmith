@@ -1,6 +1,6 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
-  "allowAddNewRow": true,
+  "allowAddNewRow": false,
   "animateLoading": true,
   "borderColor": "#d4d4d8",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
@@ -9,7 +9,7 @@
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,
-  "cellBackground": "#d4d4d8",
+  "cellBackground": "",
   "childStylesheet": {
     "button": {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
@@ -66,7 +66,7 @@
   "customIsLoading": false,
   "customIsLoadingValue": "",
   "defaultPageSize": 0,
-  "defaultSelectedRowIndex": 0,
+  "defaultSelectedRowIndex": "{{ get_active_orders.data.findIndex(row => row.order_no === appsmith.store.active_order) }}",
   "defaultSelectedRowIndices": [
     0
   ],
@@ -127,22 +127,16 @@
       "key": "primaryColumns.folded_qty.computedValue"
     },
     {
-      "key": "primaryColumns.balance_qty.cellBackground"
-    },
-    {
-      "key": "evenRowColor"
-    },
-    {
       "key": "primaryColumns.instructions.computedValue"
     },
     {
-      "key": "primaryColumns.produced_qty.cellBackground"
+      "key": "primaryColumns.invoice_details.computedValue"
+    },
+    {
+      "key": "defaultSelectedRowIndex"
     },
     {
       "key": "primaryColumns.order_no.cellBackground"
-    },
-    {
-      "key": "primaryColumns.invoice_details.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -153,16 +147,16 @@
       "key": "primaryColumns.balance_qty.cellBackground"
     },
     {
-      "key": "evenRowColor"
-    },
-    {
-      "key": "oddRowColor"
-    },
-    {
       "key": "primaryColumns.produced_qty.cellBackground"
     },
     {
       "key": "primaryColumns.order_no.cellBackground"
+    },
+    {
+      "key": "onRowSelected"
+    },
+    {
+      "key": "primaryColumns.order_date.cellBackground"
     }
   ],
   "dynamicTriggerPathList": [
@@ -172,7 +166,7 @@
   ],
   "enableClientSideSearch": true,
   "endOfData": false,
-  "evenRowColor": "{{appsmith.theme.colors.backgroundColor}}",
+  "evenRowColor": "#b4af9c",
   "flexVerticalAlignment": "start",
   "headerRowColor": "#eab308",
   "headerTextColor": "#231f20",
@@ -195,8 +189,8 @@
   "mobileRightColumn": 39,
   "mobileTopRow": 10,
   "needsErrorInfo": false,
-  "oddRowColor": "{{}}",
-  "onRowSelected": "{{showModal(edit_order_details.name);}}",
+  "oddRowColor": "#b4af9c",
+  "onRowSelected": "{{ storeValue('active_order', Table1.selectedRow.order_no).then(() => showModal('edit_order_details')) }}",
   "originalBottomRow": 110,
   "originalTopRow": 29,
   "parentColumnSpace": 20.25,
@@ -207,7 +201,7 @@
       "alias": "balance_qty",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( currentRow.balance_qty === 0 ? \"#dcfce7\" : \"\" )) :  currentRow.balance_qty === 0 ? \"#dcfce7\" : \"\"  })()}}",
+      "cellBackground": "",
       "columnType": "number",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"balance_qty\"])) : balance_qty })()}}",
       "currencyCode": "USD",
@@ -240,7 +234,7 @@
       "alias": "color",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "#d4d4d8",
+      "cellBackground": "",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"color\"])) : color })()}}",
       "currencyCode": "USD",
@@ -273,7 +267,7 @@
       "alias": "extra_pcs",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "#d4d4d8",
+      "cellBackground": "",
       "columnType": "number",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"extra_pcs\"])) : extra_pcs })()}}",
       "currencyCode": "USD",
@@ -307,7 +301,7 @@
       "alias": "folded_qty",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "#d4d4d8",
+      "cellBackground": "",
       "columnType": "number",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"folded_qty\"])) : folded_qty })()}}",
       "currencyCode": "USD",
@@ -341,7 +335,7 @@
       "alias": "id",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "#d4d4d8",
+      "cellBackground": "",
       "columnType": "number",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"id\"])) : id })()}}",
       "currencyCode": "USD",
@@ -374,7 +368,7 @@
       "alias": "instructions",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "#d4d4d8",
+      "cellBackground": "",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"instructions\"])) : instructions })()}}",
       "currencyCode": "USD",
@@ -408,7 +402,7 @@
       "alias": "invoice_details",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "#d4d4d8",
+      "cellBackground": "",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"invoice_details\"])) : invoice_details })()}}",
       "currencyCode": "USD",
@@ -442,7 +436,7 @@
       "alias": "item_size",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "#d4d4d8",
+      "cellBackground": "",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"item_size\"])) : item_size })()}}",
       "currencyCode": "USD",
@@ -475,7 +469,7 @@
       "alias": "logo",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "#d4d4d8",
+      "cellBackground": "",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"logo\"])) : logo })()}}",
       "currencyCode": "USD",
@@ -508,7 +502,7 @@
       "alias": "order_date",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "#d4d4d8",
+      "cellBackground": "",
       "columnType": "date",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"order_date\"])) : order_date })()}}",
       "currencyCode": "USD",
@@ -543,7 +537,7 @@
       "alias": "order_no",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( currentRow.balance_qty === 0 ? \"#dcfce7\" : (currentRow.produced_qty >= currentRow.ordered_qty ? \"#f5ab49\" : \"\") )) :  currentRow.balance_qty === 0 ? \"#dcfce7\" : (currentRow.produced_qty >= currentRow.ordered_qty ? \"#f5ab49\" : \"\")  })()}}",
+      "cellBackground": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( currentRow.balance_qty === 0 ? \"#dcfce7\" : (currentRow.produced_qty > currentRow.ordered_qty ? \"#ffedd5\" : \"\") )) :  currentRow.balance_qty === 0 ? \"#dcfce7\" : (currentRow.produced_qty > currentRow.ordered_qty ? \"#ffedd5\" : \"\")  })()}}",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"order_no\"])) : order_no })()}}",
       "currencyCode": "USD",
@@ -576,7 +570,7 @@
       "alias": "ordered_qty",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "#d4d4d8",
+      "cellBackground": "",
       "columnType": "number",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"ordered_qty\"])) : ordered_qty })()}}",
       "currencyCode": "USD",
@@ -609,7 +603,7 @@
       "alias": "produced_qty",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( currentRow.produced_qty >= currentRow.ordered_qty ? \"#f5ab49\" : \"\" )) :  currentRow.produced_qty >= currentRow.ordered_qty ? \"#f5ab49\" : \"\"  })()}}",
+      "cellBackground": "",
       "columnType": "number",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"produced_qty\"])) : produced_qty })()}}",
       "currencyCode": "USD",
@@ -642,7 +636,7 @@
       "alias": "sent_qty",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "#d4d4d8",
+      "cellBackground": "",
       "columnType": "number",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"sent_qty\"])) : sent_qty })()}}",
       "currencyCode": "USD",
@@ -675,7 +669,7 @@
       "alias": "status",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "#d4d4d8",
+      "cellBackground": "",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"status\"])) : status })()}}",
       "currencyCode": "USD",
@@ -708,7 +702,7 @@
       "alias": "stock_qty",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "#d4d4d8",
+      "cellBackground": "",
       "columnType": "number",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"stock_qty\"])) : stock_qty })()}}",
       "currencyCode": "USD",

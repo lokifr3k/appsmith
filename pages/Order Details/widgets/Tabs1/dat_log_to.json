@@ -2,63 +2,60 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 6,
+  "bottomRow": 8,
   "boxShadow": "none",
   "closeOnSelection": true,
   "dateFormat": "YYYY-MM-DD",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{moment()}}",
+  "defaultDate": "2026-03-12T12:36:29.685Z",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
-    },
-    {
-      "key": "defaultDate"
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicPropertyPathList": [
+  "dynamicTriggerPathList": [
     {
-      "key": "defaultDate"
+      "key": "onDateSelected"
     }
   ],
-  "dynamicTriggerPathList": [],
   "firstDayOfWeek": 0,
   "isDisabled": false,
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "ksbjh4c7xh",
-  "label": "Date",
+  "key": "9lonyu8661",
+  "label": "To Date",
   "labelAlignment": "left",
   "labelPosition": "Top",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
-  "leftColumn": 11,
+  "leftColumn": 25,
   "maxDate": "2121-12-31T18:29:00.000Z",
   "maxDynamicHeight": 9000,
   "minDate": "1920-12-31T18:30:00.000Z",
   "minDynamicHeight": 4,
   "minWidth": 450,
   "mobileBottomRow": 8,
-  "mobileLeftColumn": 5,
-  "mobileRightColumn": 25,
+  "mobileLeftColumn": 38,
+  "mobileRightColumn": 58,
   "mobileTopRow": 1,
   "needsErrorInfo": false,
-  "parentColumnSpace": 5.41796875,
-  "parentId": "2jj276073f",
+  "onDateSelected": "{{get_all_order_logs.run()}}",
+  "parentColumnSpace": 18.65625,
+  "parentId": "cas6s19k4u",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
   "rightColumn": 31,
   "shortcuts": false,
   "timePrecision": "minute",
-  "topRow": 0,
+  "topRow": 1,
   "type": "DATE_PICKER_WIDGET2",
   "version": 2,
-  "widgetId": "xbl7tslps3",
-  "widgetName": "fold_date"
+  "widgetId": "5xxffqct9z",
+  "widgetName": "dat_log_to"
 }

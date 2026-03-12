@@ -7,58 +7,54 @@
   "closeOnSelection": true,
   "dateFormat": "YYYY-MM-DD",
   "datePickerType": "DATE_PICKER",
-  "defaultDate": "{{moment()}}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
     },
     {
       "key": "borderRadius"
-    },
-    {
-      "key": "defaultDate"
     }
   ],
   "dynamicHeight": "FIXED",
-  "dynamicPropertyPathList": [
+  "dynamicTriggerPathList": [
     {
-      "key": "defaultDate"
+      "key": "onDateSelected"
     }
   ],
-  "dynamicTriggerPathList": [],
   "firstDayOfWeek": 0,
   "isDisabled": false,
   "isLoading": false,
   "isRequired": false,
   "isVisible": true,
-  "key": "ksbjh4c7xh",
-  "label": "Date",
+  "key": "pa0jhdhqz3",
+  "label": "From Date",
   "labelAlignment": "left",
   "labelPosition": "Top",
   "labelTextSize": "0.875rem",
   "labelWidth": 5,
-  "leftColumn": 11,
+  "leftColumn": 23,
   "maxDate": "2121-12-31T18:29:00.000Z",
   "maxDynamicHeight": 9000,
   "minDate": "1920-12-31T18:30:00.000Z",
   "minDynamicHeight": 4,
   "minWidth": 450,
-  "mobileBottomRow": 8,
-  "mobileLeftColumn": 5,
-  "mobileRightColumn": 25,
-  "mobileTopRow": 1,
+  "mobileBottomRow": 6,
+  "mobileLeftColumn": 23,
+  "mobileRightColumn": 43,
+  "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "parentColumnSpace": 5.41796875,
-  "parentId": "2jj276073f",
+  "onDateSelected": "{{get_active_orders.run()}}",
+  "parentColumnSpace": 18.96875,
+  "parentId": "0",
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 31,
+  "rightColumn": 29,
   "shortcuts": false,
   "timePrecision": "minute",
   "topRow": 0,
   "type": "DATE_PICKER_WIDGET2",
   "version": 2,
-  "widgetId": "xbl7tslps3",
-  "widgetName": "fold_date"
+  "widgetId": "vjghrik1ae",
+  "widgetName": "dat_filter_from"
 }

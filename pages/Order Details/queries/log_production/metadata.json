@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO order_logs (order_no, log_date, activity_type, qty)\nVALUES (\n    '{{sel_edit_order.selectedOptionValue}}', \n    '{{prod_date.formattedDate}}', \n    'Produced', \n    {{prod_qty.text || 0}}\n);\n\nUPDATE export_orders\nSET produced_qty = COALESCE(produced_qty, 0) + {{prod_qty.text || 0}}\nWHERE order_no = '{{sel_edit_order.selectedOptionValue}}';",
+      "body": "INSERT INTO order_logs (order_no, log_date, activity_type, qty)\nVALUES (\n    '{{sel_edit_order.selectedOptionValue}}', \n    '{{ moment(prod_date.selectedDate).format('YYYY-MM-DD') }}', \n    'Produced', \n    {{prod_qty.text || 0}}\n);\n\nUPDATE export_orders\nSET produced_qty = COALESCE(produced_qty, 0) + {{prod_qty.text || 0}}\nWHERE order_no = '{{sel_edit_order.selectedOptionValue}}';",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

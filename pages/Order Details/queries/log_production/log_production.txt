@@ -1,7 +1,7 @@
 INSERT INTO order_logs (order_no, log_date, activity_type, qty)
 VALUES (
     '{{sel_edit_order.selectedOptionValue}}', 
-    '{{prod_date.formattedDate}}', 
+    '{{ moment(prod_date.selectedDate).format('YYYY-MM-DD') }}', 
     'Produced', 
     {{prod_qty.text || 0}}
 );

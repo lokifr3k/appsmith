@@ -1,0 +1,5 @@
+SELECT * FROM order_logs 
+WHERE ('{{sel_filter_activity.selectedOptionValue}}' = '' OR activity_type = '{{sel_filter_activity.selectedOptionValue}}')
+AND ('{{dat_log_from.formattedDate}}' = '' OR log_date >= CAST(NULLIF('{{dat_log_from.formattedDate}}', '') AS DATE))
+AND ('{{dat_log_to.formattedDate}}' = '' OR log_date <= CAST(NULLIF('{{dat_log_to.formattedDate}}', '') AS DATE))
+ORDER BY log_date DESC, id DESC;

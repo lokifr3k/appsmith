@@ -2,4 +2,6 @@ SELECT * FROM export_orders
 WHERE status != 'Completed'
 AND item_size ILIKE '%' || '{{sel_filter_size.selectedOptionValue || ""}}' || '%'
 AND color ILIKE '%' || '{{sel_filter_color.selectedOptionValue || ""}}' || '%'
+AND ('{{dat_filter_from.formattedDate}}' = '' OR order_date >= CAST(NULLIF('{{dat_filter_from.formattedDate}}', '') AS DATE))
+AND ('{{dat_filter_to.formattedDate}}' = '' OR order_date <= CAST(NULLIF('{{dat_filter_to.formattedDate}}', '') AS DATE))
 ORDER BY order_no ASC;

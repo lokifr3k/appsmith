@@ -54,7 +54,7 @@
   "customIsLoading": false,
   "customIsLoadingValue": "",
   "defaultPageSize": 0,
-  "defaultSelectedRowIndex": 0,
+  "defaultSelectedRowIndex": "{{ get_completed_orders.data.findIndex(row => row.order_no === appsmith.store.active_order) }}",
   "defaultSelectedRowIndices": [
     0
   ],
@@ -119,9 +119,16 @@
     },
     {
       "key": "primaryColumns.invoice_details.computedValue"
+    },
+    {
+      "key": "defaultSelectedRowIndex"
     }
   ],
-  "dynamicPropertyPathList": [],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onRowSelected"
+    }
+  ],
   "dynamicTriggerPathList": [
     {
       "key": "onRowSelected"
@@ -148,7 +155,7 @@
   "mobileRightColumn": 34,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "onRowSelected": "{{showModal(edit_order_details.name);}}",
+  "onRowSelected": "{{ storeValue('active_order', tbl_completed_orders.selectedRow.order_no).then(() => showModal('edit_order_details')) }}",
   "parentColumnSpace": 18.65625,
   "parentId": "rupsu68g8v",
   "parentRowSpace": 10,
