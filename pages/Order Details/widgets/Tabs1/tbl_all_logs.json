@@ -39,7 +39,7 @@
     "qty",
     "customColumn1"
   ],
-  "columnUpdatedAt": 1773315834235,
+  "columnUpdatedAt": 1773320663646,
   "columnWidthMap": {},
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -315,6 +315,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 55,
   "searchKey": "",
+  "showInlineEditingOptionDropdown": true,
   "tableData": "{{get_all_order_logs.data}}",
   "textSize": "0.875rem",
   "topRow": 8,

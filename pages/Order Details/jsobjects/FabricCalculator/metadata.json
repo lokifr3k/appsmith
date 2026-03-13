@@ -1,0 +1,16 @@
+{
+  "gitSyncId": "69ac43766d6d6f3594d1d6ed_c307e4f0-7d85-4130-8ab9-40572d9110eb",
+  "id": "Order Details_FabricCalculator",
+  "unpublishedCollection": {
+    "name": "FabricCalculator",
+    "pageId": "Order Details",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "fabricData",
+        "value": "{\n  \"10X10\": {\n    pcs: 80,\n    fabric: 39\n  },\n  \"11X11\": {\n    pcs: 63,\n    fabric: 39\n  },\n  \"12X12C\": {\n    pcs: 49,\n    fabric: 39\n  },\n  \"12X12\": {\n    pcs: 58,\n    fabric: 39\n  },\n  \"14X14\": {\n    pcs: 42.85,\n    fabric: 39\n  },\n  \"15X15\": {\n    pcs: 46.66,\n    fabric: 50\n  },\n  \"16X16\": {\n    pcs: 31.25,\n    fabric: 39\n  },\n  \"20X10\": {\n    pcs: 40,\n    fabric: 39\n  },\n  \"20X20\": {\n    pcs: 20,\n    fabric: 39\n  },\n  \"38X28\": {\n    pcs: 7.8,\n    fabric: 39\n  },\n  \"30X30\": {\n    pcs: 10,\n    fabric: 50\n  },\n  \"35X25\": {\n    pcs: 14.28,\n    fabric: 58\n  },\n  \"40X28\": {\n    pcs: 7.5,\n    fabric: 39\n  },\n  \"40X30\": {\n    pcs: 6.66,\n    fabric: 39\n  },\n  \"40X40\": {\n    pcs: 5,\n    fabric: 39\n  },\n  \"40X50\": {\n    pcs: 4,\n    fabric: 39\n  },\n  \"48X48\": {\n    pcs: 4.16,\n    fabric: 50\n  },\n  \"50X25\": {\n    pcs: 8,\n    fabric: 50\n  },\n  \"40X20\": {\n    pcs: 10,\n    fabric: 39\n  }\n}"
+      }
+    ]
+  }
+}
