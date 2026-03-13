@@ -1,0 +1,36 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 8,
+  "boxShadow": "none",
+  "buttonColor": "#eab308",
+  "buttonStyle": "PRIMARY",
+  "buttonVariant": "PRIMARY",
+  "dynamicBindingPathList": [
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "iconName": "database",
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "mstfzu42pw",
+  "leftColumn": 43,
+  "minWidth": 50,
+  "mobileBottomRow": 10,
+  "mobileLeftColumn": 46,
+  "mobileRightColumn": 62,
+  "mobileTopRow": 2,
+  "needsErrorInfo": false,
+  "parentId": "ayljskbwyr",
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "hug",
+  "rightColumn": 59,
+  "topRow": 0,
+  "type": "ICON_BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "2gtdgo26fi",
+  "widgetName": "IconButton5"
+}

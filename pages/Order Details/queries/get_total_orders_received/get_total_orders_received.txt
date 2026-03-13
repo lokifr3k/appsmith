@@ -1,0 +1,1 @@
+SELECT SUM(ordered_qty) as total_orders FROM export_orders;

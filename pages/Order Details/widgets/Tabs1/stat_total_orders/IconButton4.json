@@ -1,0 +1,36 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 8,
+  "boxShadow": "none",
+  "buttonColor": "#3b82f6",
+  "buttonStyle": "PRIMARY",
+  "buttonVariant": "PRIMARY",
+  "dynamicBindingPathList": [
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "iconName": "shopping-cart",
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "mstfzu42pw",
+  "leftColumn": 42,
+  "minWidth": 50,
+  "mobileBottomRow": 10,
+  "mobileLeftColumn": 46,
+  "mobileRightColumn": 62,
+  "mobileTopRow": 2,
+  "needsErrorInfo": false,
+  "parentId": "7beliyffys",
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "hug",
+  "rightColumn": 58,
+  "topRow": 0,
+  "type": "ICON_BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "afue3bmtaf",
+  "widgetName": "IconButton4"
+}

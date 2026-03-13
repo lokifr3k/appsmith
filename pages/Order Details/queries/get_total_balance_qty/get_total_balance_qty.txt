@@ -1,0 +1,1 @@
+SELECT SUM(balance_qty) as total_balance FROM export_orders;

@@ -1,0 +1,1 @@
+SELECT SUM(stock_qty) as total_stock FROM export_orders;

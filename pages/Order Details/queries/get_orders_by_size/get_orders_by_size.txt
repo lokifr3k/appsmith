@@ -1,0 +1,4 @@
+SELECT item_size, SUM(ordered_qty) AS total_qty 
+FROM export_orders 
+GROUP BY item_size 
+ORDER BY total_qty DESC;
