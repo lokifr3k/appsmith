@@ -32,7 +32,7 @@
   "mobileRightColumn": 47,
   "mobileTopRow": 18,
   "needsErrorInfo": false,
-  "onClick": "{{closeModal(edit_order_details.name);\nget_all_orders.run()}}",
+  "onClick": "{{get_all_orders.run();\ncloseModal(edit_order_details.name);}}",
   "originalBottomRow": 57,
   "originalTopRow": 53,
   "parentId": "g1mmc7grx6",

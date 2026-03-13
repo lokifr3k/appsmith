@@ -144,6 +144,51 @@
       "version": 1,
       "widgetId": "cas6s19k4u",
       "widgetName": "Canvas14"
+    },
+    {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "bottomRow": 650,
+      "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+      "canExtend": false,
+      "containerStyle": "none",
+      "detachFromLayout": true,
+      "dynamicBindingPathList": [
+        {
+          "key": "borderRadius"
+        },
+        {
+          "key": "boxShadow"
+        }
+      ],
+      "dynamicHeight": "AUTO_HEIGHT",
+      "dynamicTriggerPathList": [],
+      "flexLayers": [],
+      "isLoading": false,
+      "isVisible": true,
+      "key": "8vrjrbualo",
+      "leftColumn": 0,
+      "maxDynamicHeight": 9000,
+      "minDynamicHeight": 4,
+      "minHeight": 690,
+      "minWidth": 450,
+      "mobileBottomRow": 691,
+      "mobileLeftColumn": 0,
+      "mobileRightColumn": 1214,
+      "mobileTopRow": 1,
+      "needsErrorInfo": false,
+      "parentColumnSpace": 1,
+      "parentId": "x9f1s6agod",
+      "parentRowSpace": 1,
+      "renderMode": "CANVAS",
+      "responsiveBehavior": "fill",
+      "rightColumn": 1214,
+      "tabId": "tabdkl9423hiw",
+      "tabName": "Dashboard",
+      "topRow": 1,
+      "type": "CANVAS_WIDGET",
+      "version": 1,
+      "widgetId": "589mm20zdp",
+      "widgetName": "Canvas15"
     }
   ],
   "defaultTab": "Active Orders",
@@ -192,7 +237,8 @@
   "tabsObj": {
     "tab1": {
       "id": "tab1",
-      "index": 0,
+      "index": 1,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Active Orders",
       "positioning": "vertical",
@@ -200,15 +246,25 @@
     },
     "tab2": {
       "id": "tab2",
-      "index": 1,
+      "index": 2,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Completed Order",
       "positioning": "vertical",
       "widgetId": "rupsu68g8v"
     },
+    "tabdkl9423hiw": {
+      "id": "tabdkl9423hiw",
+      "index": 0,
+      "isDuplicateLabel": false,
+      "isVisible": true,
+      "label": "Dashboard",
+      "widgetId": "589mm20zdp"
+    },
     "tabqoe774tp6e": {
       "id": "tabqoe774tp6e",
-      "index": 2,
+      "index": 3,
+      "isDuplicateLabel": false,
       "isVisible": true,
       "label": "Order Logs",
       "widgetId": "cas6s19k4u"
