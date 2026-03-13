@@ -166,9 +166,6 @@
       "key": "tableData"
     },
     {
-      "key": "primaryColumns.balance_qty.cellBackground"
-    },
-    {
       "key": "primaryColumns.produced_qty.cellBackground"
     },
     {
@@ -223,7 +220,7 @@
       "alias": "balance_qty",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "",
+      "cellBackground": "#dbeafe",
       "columnType": "number",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"balance_qty\"])) : balance_qty })()}}",
       "currencyCode": "USD",
@@ -697,7 +694,7 @@
       "alias": "ordered_qty",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "",
+      "cellBackground": "#fef9c3",
       "columnType": "number",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"ordered_qty\"])) : ordered_qty })()}}",
       "currencyCode": "USD",
@@ -829,7 +826,7 @@
       "alias": "stock_qty",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "",
+      "cellBackground": "#f3e8ff",
       "columnType": "number",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"stock_qty\"])) : stock_qty })()}}",
       "currencyCode": "USD",
