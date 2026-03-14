@@ -1,0 +1,115 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "allowScroll": false,
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 78,
+  "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+  "chartData": {
+    "u7kuonm3ka": {
+      "data": "{{\n  get_orders_by_color.data.map(row => ({\n    x: row.item_color || \"Unknown\",\n    y: Number(row.total_qty) || 0\n  }))\n}}",
+      "seriesName": ""
+    }
+  },
+  "chartName": "Orders By Color",
+  "chartType": "CUSTOM_ECHART",
+  "customEChartConfig": "{{ ((chartType) => ( \n(function() {\n// 1. The Color Dictionary (You can change these hex codes anytime!)\nconst colorMap = {\n\"OFFWHITE\": \"#E6E4D8\",\n\"BLACK\": \"#222222\",\n\"GREY\": \"#888888\",\n\"APPLE GREEN\": \"#8DB600\",\n\"MUSTARD\": \"#E1AD01\",\n\"DEEP RED\": \"#8B0000\",\n\"DARK BLUE\": \"#1E3A8A\",\n\"DARK GREY\": \"#4B5563\",\n\"HERB\": \"#4A7A4A\",\n\"NATURAL\": \"#DDC0A3\"\n};\n// 2. Format the data and apply the specific colors\nconst formattedData = get_orders_by_color.data.map(row => ({\n  name: row.item_color || \"Unknown\",\n  value: Number(row.total_qty) || 0,\n  itemStyle: {\n    color: colorMap[row.item_color] || \"#9CA3AF\", // Default gray if color isn't in the list\n    borderColor: \"#FFFFFF\", // Adds a tiny white line between slices so dark colors don't bleed\n    borderWidth: 1\n  }\n}));\n\n// 3. Build the actual Pie Chart\nreturn {\n  tooltip: {\n    trigger: 'item',\n    formatter: '{b}: {c} pcs ({d}%)'\n  },\n  series: [\n    {\n      type: 'pie',\n      radius: '70%',\n      label: {\n        show: true,\n        formatter: '{b} : {d}%'\n      },\n      data: formattedData\n    }\n  ]\n};\n\t})()\n))(Chart2.chartType) }}",
+  "customFusionChartConfig": {
+    "dataSource": {
+      "chart": {
+        "alignCaptionWithCanvas": 1,
+        "canvasPadding": "0",
+        "caption": "Sales Report",
+        "captionAlignment": "center",
+        "captionFontColor": "#231F20",
+        "captionFontSize": "24",
+        "captionPadding": "20",
+        "chartBottomMargin": "10",
+        "chartLeftMargin": "20",
+        "chartRightMargin": "40",
+        "chartTopMargin": "10",
+        "labelFontColor": "#716e6e",
+        "labelFontSize": "12",
+        "legendIconAlpha": "100",
+        "legendIconBgAlpha": "100",
+        "legendIconSides": "4",
+        "legendPosition": "top",
+        "theme": "fusion",
+        "xAxisName": "Product Line",
+        "xAxisNameFontColor": "#716e6e",
+        "xAxisNameFontSize": "14",
+        "yAxisName": "Revenue($)",
+        "yAxisNameFontColor": "#716e6e",
+        "yAxisNameFontSize": "14",
+        "yAxisValueFontColor": "#716e6e",
+        "yAxisValueFontSize": "12"
+      },
+      "data": [
+        {
+          "label": "Product1",
+          "value": 20000
+        },
+        {
+          "label": "Product2",
+          "value": 22000
+        },
+        {
+          "label": "Product3",
+          "value": 32000
+        }
+      ]
+    },
+    "type": "column2d"
+  },
+  "dynamicBindingPathList": [
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "boxShadow"
+    },
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "fontFamily"
+    },
+    {
+      "key": "chartData.u7kuonm3ka.data"
+    },
+    {
+      "key": "customEChartConfig"
+    }
+  ],
+  "dynamicTriggerPathList": [],
+  "flexVerticalAlignment": "start",
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "31g0xvyanq",
+  "labelOrientation": "auto",
+  "leftColumn": 34,
+  "minWidth": 450,
+  "mobileBottomRow": 78,
+  "mobileLeftColumn": 13,
+  "mobileRightColumn": 37,
+  "mobileTopRow": 46,
+  "needsErrorInfo": true,
+  "originalBottomRow": 78,
+  "originalTopRow": 46,
+  "parentColumnSpace": 18.65625,
+  "parentId": "589mm20zdp",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 58,
+  "setAdaptiveYMin": false,
+  "showDataPointLabel": true,
+  "topRow": 46,
+  "type": "CHART_WIDGET",
+  "version": 1,
+  "widgetId": "vqvec90gyr",
+  "widgetName": "Chart2",
+  "xAxisName": "",
+  "yAxisName": ""
+}

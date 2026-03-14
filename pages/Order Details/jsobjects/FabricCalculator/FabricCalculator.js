@@ -43,5 +43,38 @@ export default {
         let meters = targetPcs / details.pcs; 
         
         return parseFloat(meters.toFixed(2)); 
+    },
+
+    getFabricTotals: () => {
+        // Pull all the data currently showing in your active orders table
+        let orders = get_active_orders.data || [];
+        let summary = {};
+
+        // Loop through every single order
+        orders.forEach(order => {
+            if (order.balance_qty > 0) {
+                let details = FabricCalculator.getDetails(order.item_size, order.color);
+                let meters = FabricCalculator.calculateMeters(order.item_size, order.color, order.balance_qty);
+
+                // If this order needs fabric, add it to the bucket!
+                if (meters > 0 && details.fabric !== "-") {
+                    let fabricName = details.fabric + '" ' + (order.color || "UNKNOWN").toUpperCase();
+
+                    if (!summary[fabricName]) {
+                        summary[fabricName] = 0;
+                    }
+                    summary[fabricName] += meters;
+                }
+            }
+        });
+
+        // Convert the invisible buckets into a clean list for the Appsmith table
+        let resultTable = Object.keys(summary).map(key => ({
+            "Fabric Type": key,
+            "Total Needed (m)": parseFloat(summary[key].toFixed(2))
+        }));
+
+        // Sort it alphabetically so all 39" group together and 50" group together
+        return resultTable.sort((a, b) => a["Fabric Type"].localeCompare(b["Fabric Type"]));
     }
 }

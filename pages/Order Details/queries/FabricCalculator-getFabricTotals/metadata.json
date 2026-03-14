@@ -1,19 +1,12 @@
 {
-  "gitSyncId": "69ac43766d6d6f3594d1d6ed_7e81cef3-d83e-4b39-a13a-44e9ba66d95c",
-  "id": "Order Details_FabricCalculator.getDetails",
+  "gitSyncId": "69ac43766d6d6f3594d1d6ed_6f054214-7855-4502-97d8-b00301afdbe4",
+  "id": "Order Details_FabricCalculator.getFabricTotals",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
     "actionConfiguration": {
       "encodeParamsToggle": true,
-      "jsArguments": [
-        {
-          "name": "size"
-        },
-        {
-          "name": "color"
-        }
-      ],
+      "jsArguments": [],
       "paginationType": "NONE",
       "timeoutInMillisecond": 10000
     },
@@ -29,8 +22,8 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "FabricCalculator.getDetails",
-    "name": "getDetails",
+    "fullyQualifiedName": "FabricCalculator.getFabricTotals",
+    "name": "getFabricTotals",
     "pageId": "Order Details",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false

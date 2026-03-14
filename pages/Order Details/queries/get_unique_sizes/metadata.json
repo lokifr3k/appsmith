@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT DISTINCT item_size AS label, item_size AS value \nFROM export_orders \nWHERE item_size IS NOT NULL AND status != 'Completed';",
+      "body": "SELECT DISTINCT UPPER(item_size) AS label, UPPER(item_size) AS value \nFROM export_orders \nORDER BY UPPER(item_size) ASC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
