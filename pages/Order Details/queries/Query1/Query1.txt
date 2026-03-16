@@ -1,1 +1,1 @@
-ALTER TABLE export_orders ADD COLUMN IF NOT EXISTS invoice_details TEXT;
+TRUNCATE TABLE export_orders, order_logs RESTART IDENTITY CASCADE;

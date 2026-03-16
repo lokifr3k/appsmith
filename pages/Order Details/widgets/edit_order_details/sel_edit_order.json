@@ -57,7 +57,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 13,
   "serverSideFiltering": false,
-  "sourceData": "{{Tabs1.selectedTab === 'Active Orders' ? get_dropdown_orders.data : get_completed_dropdown_orders.data}}",
+  "sourceData": "{{Tabs1.selectedTab === 'Completed Order' ? get_completed_dropdown_orders.data : get_dropdown_orders.data}}",
   "topRow": 0,
   "type": "SELECT_WIDGET",
   "version": 1,
