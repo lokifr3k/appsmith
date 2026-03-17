@@ -31,7 +31,7 @@
   "mobileRightColumn": 31,
   "mobileTopRow": 8,
   "needsErrorInfo": false,
-  "onClick": "{{log_folding.run().then(() => {\n  get_folding_history.run();\n  resetWidget(\"fold_qty\", true);\n  setInterval(() => {}, 1000, '');\n  get_all_orders.run();\n  get_active_orders.run();\n});}}",
+  "onClick": "{{log_folding.run().then(() => {\n  get_folding_history.run();\n  resetWidget(\"fold_qty\", true);\n  setInterval(() => {}, 1000, '');\n  get_all_orders.run();\n  get_active_orders.run();\n  DashboardUpdater.refreshAll();\n});}}",
   "parentColumnSpace": 5.41796875,
   "parentId": "2jj276073f",
   "parentRowSpace": 10,

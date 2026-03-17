@@ -32,7 +32,7 @@
   "mobileRightColumn": 63,
   "mobileTopRow": 18,
   "needsErrorInfo": false,
-  "onClick": "{{update_order_details.run();\nget_all_orders.run()}}",
+  "onClick": "{{update_order_details.run();\nget_all_orders.run();\nDashboardUpdater.refreshAll();}}",
   "parentId": "g1mmc7grx6",
   "placement": "CENTER",
   "recaptchaType": "V3",

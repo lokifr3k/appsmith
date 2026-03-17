@@ -1,0 +1,11 @@
+{
+  "gitSyncId": "69ac43766d6d6f3594d1d6ed_98172404-f429-48bf-9359-88b242b4160a",
+  "id": "Order Details_DashboardUpdater",
+  "unpublishedCollection": {
+    "name": "DashboardUpdater",
+    "pageId": "Order Details",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": []
+  }
+}
