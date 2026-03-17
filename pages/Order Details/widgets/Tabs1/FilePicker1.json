@@ -1,11 +1,10 @@
 {
+  "allowedFileTypes": [],
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 4,
+  "bottomRow": 7,
   "boxShadow": "none",
   "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
-  "buttonVariant": "PRIMARY",
-  "disabledWhenInvalid": false,
   "dynamicBindingPathList": [
     {
       "key": "buttonColor"
@@ -14,37 +13,36 @@
       "key": "borderRadius"
     }
   ],
-  "dynamicTriggerPathList": [
-    {
-      "key": "onClick"
-    }
-  ],
+  "dynamicTriggerPathList": [],
+  "dynamicTyping": true,
+  "fileDataType": "Array",
+  "files": [],
   "isDefaultClickDisabled": true,
   "isDisabled": false,
   "isLoading": false,
+  "isRequired": false,
   "isVisible": true,
-  "key": "qyouu3o5mx",
-  "leftColumn": 57,
+  "key": "xbxb2eurtw",
+  "label": "Select Files",
+  "leftColumn": 8,
+  "maxFileSize": 5,
+  "maxNumFiles": 1,
   "minWidth": 120,
   "mobileBottomRow": 7,
-  "mobileLeftColumn": 48,
-  "mobileRightColumn": 64,
+  "mobileLeftColumn": 8,
+  "mobileRightColumn": 24,
   "mobileTopRow": 3,
   "needsErrorInfo": false,
-  "onClick": "{{showModal(ShippingModal.name);}}",
-  "parentColumnSpace": 20.25,
-  "parentId": "0",
+  "parentColumnSpace": 18.65625,
+  "parentId": "l9jop1nriq",
   "parentRowSpace": 10,
-  "placement": "CENTER",
-  "recaptchaType": "V3",
   "renderMode": "CANVAS",
-  "resetFormOnClick": false,
   "responsiveBehavior": "hug",
-  "rightColumn": 64,
-  "text": "Log Shipment",
-  "topRow": 0,
-  "type": "BUTTON_WIDGET",
+  "rightColumn": 24,
+  "selectedFiles": [],
+  "topRow": 3,
+  "type": "FILE_PICKER_WIDGET_V2",
   "version": 1,
-  "widgetId": "hyvx6qh0rb",
-  "widgetName": "Button6"
+  "widgetId": "ydfpcoh5yj",
+  "widgetName": "FilePicker1"
 }

@@ -1,0 +1,11 @@
+{
+  "gitSyncId": "69ac43766d6d6f3594d1d6ed_0889c383-6937-4a58-82b5-44eb344d09b8",
+  "id": "Order Details_CSV_Uploader",
+  "unpublishedCollection": {
+    "name": "CSV_Uploader",
+    "pageId": "Order Details",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": []
+  }
+}

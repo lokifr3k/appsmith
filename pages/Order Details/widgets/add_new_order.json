@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 7,
+  "bottomRow": 4,
   "boxShadow": "none",
   "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
   "buttonVariant": "PRIMARY",
@@ -38,7 +38,7 @@
   "responsiveBehavior": "hug",
   "rightColumn": 50,
   "tooltip": "Add New Orders",
-  "topRow": 3,
+  "topRow": 0,
   "type": "ICON_BUTTON_WIDGET",
   "version": 1,
   "widgetId": "35jp40y766",

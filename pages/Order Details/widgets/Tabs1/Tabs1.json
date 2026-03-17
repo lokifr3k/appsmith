@@ -5,7 +5,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "1.5rem",
   "borderWidth": 1,
-  "bottomRow": 77,
+  "bottomRow": 76,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "children": [
     {
@@ -189,6 +189,50 @@
       "version": 1,
       "widgetId": "589mm20zdp",
       "widgetName": "Canvas15"
+    },
+    {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "bottomRow": 650,
+      "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+      "canExtend": false,
+      "containerStyle": "none",
+      "detachFromLayout": true,
+      "dynamicBindingPathList": [
+        {
+          "key": "borderRadius"
+        },
+        {
+          "key": "boxShadow"
+        }
+      ],
+      "dynamicHeight": "AUTO_HEIGHT",
+      "flexLayers": [],
+      "isLoading": false,
+      "isVisible": true,
+      "key": "i6xruws30c",
+      "leftColumn": 0,
+      "maxDynamicHeight": 9000,
+      "minDynamicHeight": 4,
+      "minHeight": 690,
+      "minWidth": 450,
+      "mobileBottomRow": 691,
+      "mobileLeftColumn": 0,
+      "mobileRightColumn": 1214,
+      "mobileTopRow": 1,
+      "needsErrorInfo": false,
+      "parentColumnSpace": 1,
+      "parentId": "x9f1s6agod",
+      "parentRowSpace": 1,
+      "renderMode": "CANVAS",
+      "responsiveBehavior": "fill",
+      "rightColumn": 1214,
+      "tabId": "tabdoc7a0x32s",
+      "tabName": "Tab 1",
+      "topRow": 1,
+      "type": "CANVAS_WIDGET",
+      "version": 1,
+      "widgetId": "l9jop1nriq",
+      "widgetName": "Canvas19"
     }
   ],
   "defaultTab": "Active Orders",
@@ -224,8 +268,8 @@
   "mobileTopRow": 10,
   "needsErrorInfo": false,
   "onTabSelected": "{{get_completed_dropdown_orders.run();\nget_all_order_logs.run()}}",
-  "originalBottomRow": 99,
-  "originalTopRow": 8,
+  "originalBottomRow": 76,
+  "originalTopRow": 7,
   "parentColumnSpace": 18.96875,
   "parentId": "0",
   "parentRowSpace": 10,
@@ -261,6 +305,13 @@
       "label": "Dashboard",
       "widgetId": "589mm20zdp"
     },
+    "tabdoc7a0x32s": {
+      "id": "tabdoc7a0x32s",
+      "index": 4,
+      "isVisible": true,
+      "label": "Tab 1",
+      "widgetId": "l9jop1nriq"
+    },
     "tabqoe774tp6e": {
       "id": "tabqoe774tp6e",
       "index": 3,
@@ -270,7 +321,7 @@
       "widgetId": "cas6s19k4u"
     }
   },
-  "topRow": 8,
+  "topRow": 7,
   "type": "TABS_WIDGET",
   "version": 3,
   "widgetId": "x9f1s6agod",

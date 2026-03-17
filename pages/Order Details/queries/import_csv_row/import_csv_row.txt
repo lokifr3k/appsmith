@@ -1,0 +1,12 @@
+INSERT INTO export_orders (order_no, order_date, item_size, color, logo, ordered_qty, produced_qty, sent_qty, invoice_details)
+VALUES (
+  '{{this.order_no}}', 
+  '{{this.order_date}}', 
+  '{{this.item_size}}', 
+  '{{this.color}}', 
+  '{{this.logo}}', 
+  {{this.ordered_qty || 0}}, 
+  {{this.produced_qty || 0}}, 
+  {{this.sent_qty || 0}}, 
+  '{{this.invoice_details}}'
+);
