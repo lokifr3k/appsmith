@@ -32,7 +32,7 @@
   "mobileRightColumn": 63,
   "mobileTopRow": 18,
   "needsErrorInfo": false,
-  "onClick": "{{ShippingProcessor.processBulkShipment();}}",
+  "onClick": "{{ShippingProcessor.processBulkShipment();\nDashboardUpdater.refreshAll();}}",
   "originalBottomRow": 73,
   "originalTopRow": 69,
   "parentId": "df0xgirdd9",
