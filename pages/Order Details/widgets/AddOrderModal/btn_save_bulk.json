@@ -32,7 +32,7 @@
   "mobileRightColumn": 63,
   "mobileTopRow": 18,
   "needsErrorInfo": false,
-  "onClick": "{{OrderProcessor.saveAll();}}",
+  "onClick": "{{OrderProcessor.saveAll();\nget_active_orders.run()}}",
   "originalBottomRow": 51,
   "originalTopRow": 47,
   "parentId": "ofi4kkagxq",

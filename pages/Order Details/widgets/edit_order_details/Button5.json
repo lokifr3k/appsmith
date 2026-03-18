@@ -28,7 +28,7 @@
   "mobileRightColumn": 61,
   "mobileTopRow": 5,
   "needsErrorInfo": false,
-  "onClick": "{{delete_order.run().then(() => {\n  get_all_orders.run();\n  closeModal(edit_order_details.name);\n  showAlert('Order Deleted Succesfully', 'success');\n}).catch(() => {});}}",
+  "onClick": "{{delete_order.run().then(() => {\n  get_all_orders.run();\n  closeModal(edit_order_details.name);\n  showAlert('Order Deleted Succesfully', 'success');\n  get_active_orders.run();\n}).catch(() => {});}}",
   "parentColumnSpace": 18.0109375,
   "parentId": "g1mmc7grx6",
   "parentRowSpace": 10,

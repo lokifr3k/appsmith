@@ -4,7 +4,7 @@ VALUES (
     '{{this.params.order_date}}',
     '{{this.params.size}}',
     '{{this.params.color}}',
-    '{{this.params.folding_type}}', 
+    '{{this.params.folding_type || ""}}',  -- <-- Added the JavaScript OR operator here!
     '{{this.params.logo}}',
     {{this.params.qty || 0}},
     '{{this.params.instructions}}',

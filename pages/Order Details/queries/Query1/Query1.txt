@@ -1,9 +1,15 @@
--- Erase it from the orders table
+-- Clean export_orders
 UPDATE export_orders 
 SET folding_type = '' 
-WHERE folding_type = '';
+WHERE folding_type IS NULL 
+   OR folding_type ILIKE 'null' 
+   OR folding_type ILIKE 'undefined' 
+   OR TRIM(folding_type) = '';
 
--- Erase it from the item master table
+-- Clean item_masters
 UPDATE item_masters 
 SET folding_type = '' 
-WHERE folding_type = 'Standard';
+WHERE folding_type IS NULL 
+   OR folding_type ILIKE 'null' 
+   OR folding_type ILIKE 'undefined' 
+   OR TRIM(folding_type) = '';
