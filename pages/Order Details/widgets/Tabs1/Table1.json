@@ -187,7 +187,7 @@
       "key": "onRowSelected"
     }
   ],
-  "enableClientSideSearch": true,
+  "enableClientSideSearch": false,
   "endOfData": false,
   "evenRowColor": "#b4af9c",
   "flexVerticalAlignment": "start",
@@ -200,7 +200,7 @@
   "isSortable": true,
   "isVisible": true,
   "isVisibleDownload": true,
-  "isVisibleFilters": true,
+  "isVisibleFilters": false,
   "isVisiblePagination": true,
   "isVisibleSearch": true,
   "key": "sc3rpxy7dg",
