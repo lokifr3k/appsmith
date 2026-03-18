@@ -1,0 +1,383 @@
+{
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "animateLoading": true,
+  "borderColor": "#E0DEDE",
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "borderWidth": "1",
+  "bottomRow": 96,
+  "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
+  "cachedTableData": {},
+  "canFreezeColumn": true,
+  "childStylesheet": {
+    "button": {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "boxShadow": "none",
+      "buttonColor": "{{appsmith.theme.colors.primaryColor}}"
+    },
+    "editActions": {
+      "discardBorderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "discardButtonColor": "{{appsmith.theme.colors.primaryColor}}",
+      "saveBorderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "saveButtonColor": "{{appsmith.theme.colors.primaryColor}}"
+    },
+    "iconButton": {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "boxShadow": "none",
+      "buttonColor": "{{appsmith.theme.colors.primaryColor}}"
+    },
+    "menuButton": {
+      "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+      "boxShadow": "none",
+      "menuColor": "{{appsmith.theme.colors.primaryColor}}"
+    }
+  },
+  "columnOrder": [
+    "id",
+    "item_size",
+    "fabric_width",
+    "pcs_per_meter",
+    "pcs_per_carton",
+    "price_per_pc",
+    "EditActions1"
+  ],
+  "columnUpdatedAt": 1773817626818,
+  "columnWidthMap": {},
+  "customIsLoading": false,
+  "customIsLoadingValue": "",
+  "defaultPageSize": 0,
+  "defaultSelectedRowIndex": 0,
+  "defaultSelectedRowIndices": [
+    0
+  ],
+  "delimiter": ",",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "boxShadow"
+    },
+    {
+      "key": "tableData"
+    },
+    {
+      "key": "primaryColumns.id.computedValue"
+    },
+    {
+      "key": "primaryColumns.item_size.computedValue"
+    },
+    {
+      "key": "primaryColumns.fabric_width.computedValue"
+    },
+    {
+      "key": "primaryColumns.pcs_per_meter.computedValue"
+    },
+    {
+      "key": "primaryColumns.pcs_per_carton.computedValue"
+    },
+    {
+      "key": "primaryColumns.price_per_pc.computedValue"
+    },
+    {
+      "key": "primaryColumns.EditActions1.saveButtonColor"
+    },
+    {
+      "key": "primaryColumns.EditActions1.saveBorderRadius"
+    },
+    {
+      "key": "primaryColumns.EditActions1.discardBorderRadius"
+    },
+    {
+      "key": "primaryColumns.EditActions1.isSaveDisabled"
+    },
+    {
+      "key": "primaryColumns.EditActions1.isDiscardDisabled"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "tableData"
+    },
+    {
+      "key": "primaryColumns.EditActions1.isSaveDisabled"
+    },
+    {
+      "key": "primaryColumns.EditActions1.isDiscardDisabled"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "primaryColumns.EditActions1.onSave"
+    }
+  ],
+  "enableClientSideSearch": true,
+  "endOfData": false,
+  "flexVerticalAlignment": "start",
+  "horizontalAlignment": "LEFT",
+  "inlineEditingSaveOption": "ROW_LEVEL",
+  "isLoading": false,
+  "isSortable": true,
+  "isVisible": true,
+  "isVisibleDownload": true,
+  "isVisibleFilters": false,
+  "isVisiblePagination": true,
+  "isVisibleSearch": true,
+  "key": "i5y1vxtjdm",
+  "label": "Data",
+  "leftColumn": 3,
+  "minWidth": 450,
+  "mobileBottomRow": 30,
+  "mobileLeftColumn": 13,
+  "mobileRightColumn": 47,
+  "mobileTopRow": 2,
+  "needsErrorInfo": false,
+  "parentColumnSpace": 18.65625,
+  "parentId": "l9jop1nriq",
+  "parentRowSpace": 10,
+  "primaryColumns": {
+    "EditActions1": {
+      "alias": "EditActions1",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "buttonStyle": "rgb(3, 179, 101)",
+      "columnType": "editActions",
+      "computedValue": "",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "discardActionLabel": "Discard",
+      "discardBorderRadius": "{{tbl_item_masters.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
+      "discardButtonColor": "#F22B2B",
+      "discardButtonVariant": "TERTIARY",
+      "discardIconAlign": "left",
+      "enableFilter": true,
+      "enableSort": true,
+      "id": "EditActions1",
+      "index": 6,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": true,
+      "isDisabled": false,
+      "isDiscardDisabled": "{{tbl_item_masters.processedTableData.map((currentRow, currentIndex) => ( !tbl_item_masters.updatedRowIndices.includes(currentIndex)))}}",
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveDisabled": "{{tbl_item_masters.processedTableData.map((currentRow, currentIndex) => ( !tbl_item_masters.updatedRowIndices.includes(currentIndex)))}}",
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Save / Discard",
+      "notation": "standard",
+      "onSave": "{{update_item_master.run().then(() => {\n  get_item_masters.run();\n});}}",
+      "originalId": "EditActions1",
+      "saveActionLabel": "Save",
+      "saveBorderRadius": "{{tbl_item_masters.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
+      "saveButtonColor": "{{tbl_item_masters.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.colors.primaryColor)))}}",
+      "saveIconAlign": "left",
+      "sticky": "right",
+      "thousandSeparator": true,
+      "validation": {},
+      "width": 150
+    },
+    "fabric_width": {
+      "alias": "fabric_width",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "columnType": "number",
+      "computedValue": "{{(() => { const tableData = tbl_item_masters.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"fabric_width\"])) : fabric_width })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "fabric_width",
+      "index": 2,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "fabric_width",
+      "notation": "standard",
+      "originalId": "fabric_width",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "id": {
+      "alias": "id",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "columnType": "number",
+      "computedValue": "{{(() => { const tableData = tbl_item_masters.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"id\"])) : id })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "id",
+      "index": 0,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "id",
+      "notation": "standard",
+      "originalId": "id",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "item_size": {
+      "alias": "item_size",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = tbl_item_masters.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"item_size\"])) : item_size })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "item_size",
+      "index": 1,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "item_size",
+      "notation": "standard",
+      "originalId": "item_size",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "pcs_per_carton": {
+      "alias": "pcs_per_carton",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "columnType": "number",
+      "computedValue": "{{(() => { const tableData = tbl_item_masters.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"pcs_per_carton\"])) : pcs_per_carton })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "pcs_per_carton",
+      "index": 4,
+      "isCellEditable": true,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": true,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "pcs_per_carton",
+      "notation": "standard",
+      "originalId": "pcs_per_carton",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "pcs_per_meter": {
+      "alias": "pcs_per_meter",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "columnType": "number",
+      "computedValue": "{{(() => { const tableData = tbl_item_masters.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"pcs_per_meter\"])) : pcs_per_meter })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "pcs_per_meter",
+      "index": 3,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "pcs_per_meter",
+      "notation": "standard",
+      "originalId": "pcs_per_meter",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "price_per_pc": {
+      "alias": "price_per_pc",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "columnType": "number",
+      "computedValue": "{{(() => { const tableData = tbl_item_masters.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"price_per_pc\"])) : price_per_pc })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "id": "price_per_pc",
+      "index": 5,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "price_per_pc",
+      "notation": "standard",
+      "originalId": "price_per_pc",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    }
+  },
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 63,
+  "searchKey": "",
+  "showInlineEditingOptionDropdown": true,
+  "tableData": "{{get_item_masters.data}}\n",
+  "textSize": "0.875rem",
+  "topRow": 2,
+  "totalRecordsCount": 0,
+  "type": "TABLE_WIDGET_V2",
+  "version": 2,
+  "verticalAlignment": "CENTER",
+  "widgetId": "rcclrr8lq7",
+  "widgetName": "tbl_item_masters"
+}

@@ -1,0 +1,6 @@
+UPDATE item_masters
+SET fabric_width = {{tbl_item_masters.updatedRow.fabric_width}},
+    pcs_per_meter = {{tbl_item_masters.updatedRow.pcs_per_meter}},
+    pcs_per_carton = {{tbl_item_masters.updatedRow.pcs_per_carton}},
+    price_per_pc = {{tbl_item_masters.updatedRow.price_per_pc}}
+WHERE id = {{tbl_item_masters.updatedRow.id}};

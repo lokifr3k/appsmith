@@ -1,0 +1,1 @@
+SELECT * FROM item_masters ORDER BY item_size ASC;

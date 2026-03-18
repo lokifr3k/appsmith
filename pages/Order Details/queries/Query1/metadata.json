@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "TRUNCATE TABLE export_orders, order_logs RESTART IDENTITY CASCADE;",
+      "body": "INSERT INTO item_masters (item_size, pcs_per_meter, fabric_width, pcs_per_carton, price_per_pc) VALUES\n('10X10', 80, 39, 0, 0),\n('11X11', 63, 39, 0, 0),\n('12X12C', 49, 39, 0, 0),\n('12X12', 58, 39, 0, 0),\n('14X14', 42.85, 39, 0, 0),\n('15X15', 46.66, 50, 0, 0),\n('16X16', 31.25, 39, 0, 0),\n('20X10', 40, 39, 0, 0),\n('20X20', 20, 39, 0, 0),\n('38X28', 7.8, 39, 0, 0),\n('30X30', 10, 50, 0, 0),\n('35X25', 14.28, 58, 0, 0),\n('40X28', 7.5, 39, 0, 0),\n('40X30', 6.66, 39, 0, 0),\n('40X40', 5, 39, 0, 0),\n('40X50', 4, 39, 0, 0),\n('48X48', 4.16, 50, 0, 0),\n('50X25', 8, 50, 0, 0),\n('40X20', 10, 39, 0, 0);",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
