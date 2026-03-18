@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM export_orders \nWHERE status != 'Completed'\nAND item_size ILIKE '%' || '{{sel_filter_size.selectedOptionValue || \"\"}}' || '%'\nAND color ILIKE '%' || '{{sel_filter_color.selectedOptionValue || \"\"}}' || '%'\nAND ('{{dat_filter_from.formattedDate}}' = '' OR order_date >= CAST(NULLIF('{{dat_filter_from.formattedDate}}', '') AS DATE))\nAND ('{{dat_filter_to.formattedDate}}' = '' OR order_date <= CAST(NULLIF('{{dat_filter_to.formattedDate}}', '') AS DATE))\nORDER BY order_no ASC;",
+      "body": "WITH OrderData AS (\n    SELECT \n        *,\n        CASE \n            WHEN status = 'Completed' THEN 'Completed'\n            WHEN balance_qty <= 0 AND produced_qty > 0 THEN 'Fully Folded'\n            WHEN produced_qty >= ordered_qty THEN 'Fully Printed'\n            WHEN produced_qty > 0 THEN 'In Production'\n            ELSE 'Not Started'\n        END AS live_status\n    FROM export_orders\n)\nSELECT * FROM OrderData\nWHERE status != 'Completed'\nAND item_size ILIKE '%' || '{{sel_filter_size.selectedOptionValue || \"\"}}' || '%'\nAND color ILIKE '%' || '{{sel_filter_color.selectedOptionValue || \"\"}}' || '%'\nAND ('{{dat_filter_from.formattedDate}}' = '' OR order_date >= CAST(NULLIF('{{dat_filter_from.formattedDate}}', '') AS DATE))\nAND ('{{dat_filter_to.formattedDate}}' = '' OR order_date <= CAST(NULLIF('{{dat_filter_to.formattedDate}}', '') AS DATE))\nAND live_status ILIKE '%' || '{{sel_filter_status.selectedOptionValue || \"\"}}' || '%'\nORDER BY order_no ASC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

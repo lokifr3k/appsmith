@@ -1,7 +1,20 @@
-SELECT * FROM export_orders 
+WITH OrderData AS (
+    SELECT 
+        *,
+        CASE 
+            WHEN status = 'Completed' THEN 'Completed'
+            WHEN balance_qty <= 0 AND produced_qty > 0 THEN 'Fully Folded'
+            WHEN produced_qty >= ordered_qty THEN 'Fully Printed'
+            WHEN produced_qty > 0 THEN 'In Production'
+            ELSE 'Not Started'
+        END AS live_status
+    FROM export_orders
+)
+SELECT * FROM OrderData
 WHERE status != 'Completed'
 AND item_size ILIKE '%' || '{{sel_filter_size.selectedOptionValue || ""}}' || '%'
 AND color ILIKE '%' || '{{sel_filter_color.selectedOptionValue || ""}}' || '%'
 AND ('{{dat_filter_from.formattedDate}}' = '' OR order_date >= CAST(NULLIF('{{dat_filter_from.formattedDate}}', '') AS DATE))
 AND ('{{dat_filter_to.formattedDate}}' = '' OR order_date <= CAST(NULLIF('{{dat_filter_to.formattedDate}}', '') AS DATE))
+AND live_status ILIKE '%' || '{{sel_filter_status.selectedOptionValue || ""}}' || '%'
 ORDER BY order_no ASC;
