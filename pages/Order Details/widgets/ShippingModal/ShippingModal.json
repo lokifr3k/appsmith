@@ -2,7 +2,7 @@
   "animateLoading": true,
   "backgroundColor": "#b3a8a8",
   "borderRadius": "1.5rem",
-  "bottomRow": 75,
+  "bottomRow": 750,
   "boxShadow": "none",
   "canEscapeKeyClose": true,
   "canOutsideClickClose": true,

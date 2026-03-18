@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT UPPER(item_size) AS item_size, SUM(ordered_qty) AS total_qty \nFROM export_orders \nGROUP BY UPPER(item_size) \nORDER BY total_qty DESC;",
+      "body": "SELECT UPPER(item_size) AS item_size, SUM(balance_qty) AS total_qty \nFROM export_orders \nGROUP BY UPPER(item_size) \nORDER BY total_qty DESC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

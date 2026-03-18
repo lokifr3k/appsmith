@@ -661,7 +661,7 @@
       "alias": "order_no",
       "allowCellWrapping": true,
       "allowSameOptionsInNewRow": true,
-      "cellBackground": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( currentRow.balance_qty === 0 ? \"#dcfce7\" : (currentRow.produced_qty > currentRow.ordered_qty ? \"#ffedd5\" : \"\") )) :  currentRow.balance_qty === 0 ? \"#dcfce7\" : (currentRow.produced_qty > currentRow.ordered_qty ? \"#ffedd5\" : \"\")  })()}}",
+      "cellBackground": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => ( currentRow.balance_qty === 0 ? \"#dcfce7\" : (currentRow.produced_qty >= currentRow.ordered_qty ? \"#ffedd5\" : \"\") )) :  currentRow.balance_qty === 0 ? \"#dcfce7\" : (currentRow.produced_qty >= currentRow.ordered_qty ? \"#ffedd5\" : \"\")  })()}}",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"order_no\"])) : order_no })()}}",
       "currencyCode": "USD",
