@@ -1,9 +1,10 @@
-INSERT INTO export_orders (order_no, order_date, item_size, color, logo, ordered_qty, instructions, status)
+INSERT INTO export_orders (order_no, order_date, item_size, color, folding_type, logo, ordered_qty, instructions, status)
 VALUES (
     '{{this.params.order_no}}',
     '{{this.params.order_date}}',
     '{{this.params.size}}',
     '{{this.params.color}}',
+    '{{this.params.folding_type}}', 
     '{{this.params.logo}}',
     {{this.params.qty || 0}},
     '{{this.params.instructions}}',

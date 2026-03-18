@@ -1,20 +1,9 @@
-INSERT INTO item_masters (item_size, pcs_per_meter, fabric_width, pcs_per_carton, price_per_pc) VALUES
-('10X10', 80, 39, 0, 0),
-('11X11', 63, 39, 0, 0),
-('12X12C', 49, 39, 0, 0),
-('12X12', 58, 39, 0, 0),
-('14X14', 42.85, 39, 0, 0),
-('15X15', 46.66, 50, 0, 0),
-('16X16', 31.25, 39, 0, 0),
-('20X10', 40, 39, 0, 0),
-('20X20', 20, 39, 0, 0),
-('38X28', 7.8, 39, 0, 0),
-('30X30', 10, 50, 0, 0),
-('35X25', 14.28, 58, 0, 0),
-('40X28', 7.5, 39, 0, 0),
-('40X30', 6.66, 39, 0, 0),
-('40X40', 5, 39, 0, 0),
-('40X50', 4, 39, 0, 0),
-('48X48', 4.16, 50, 0, 0),
-('50X25', 8, 50, 0, 0),
-('40X20', 10, 39, 0, 0);
+-- Erase it from the orders table
+UPDATE export_orders 
+SET folding_type = '' 
+WHERE folding_type = 'Standard';
+
+-- Erase it from the item master table
+UPDATE item_masters 
+SET folding_type = '' 
+WHERE folding_type = 'Standard';

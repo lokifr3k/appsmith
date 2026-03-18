@@ -39,6 +39,7 @@
     "item_size",
     "color",
     "logo",
+    "folding_type",
     "ordered_qty",
     "produced_qty",
     "folded_qty",
@@ -55,7 +56,7 @@
     "invoice_details",
     "id"
   ],
-  "columnUpdatedAt": 1773812276819,
+  "columnUpdatedAt": 1773827571810,
   "columnWidthMap": {
     "balance_qty": 94,
     "color": 96,
@@ -64,6 +65,7 @@
     "customColumn3": 118,
     "extra_pcs": 73,
     "folded_qty": 72,
+    "folding_type": 119,
     "id": 60,
     "instructions": 122,
     "invoice_details": 145,
@@ -163,6 +165,9 @@
     },
     {
       "key": "primaryColumns.live_status.computedValue"
+    },
+    {
+      "key": "primaryColumns.folding_type.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -451,6 +456,40 @@
       "label": "Fold",
       "notation": "standard",
       "originalId": "folded_qty",
+      "sticky": "",
+      "textColor": "#231f20",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "folding_type": {
+      "alias": "folding_type",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"folding_type\"])) : folding_type })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "CENTER",
+      "id": "folding_type",
+      "index": 16,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "folding_type",
+      "notation": "standard",
+      "originalId": "folding_type",
       "sticky": "",
       "textColor": "#231f20",
       "textSize": "0.875rem",

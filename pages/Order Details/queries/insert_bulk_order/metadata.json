@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO export_orders (order_no, order_date, item_size, color, logo, ordered_qty, instructions, status)\nVALUES (\n    '{{this.params.order_no}}',\n    '{{this.params.order_date}}',\n    '{{this.params.size}}',\n    '{{this.params.color}}',\n    '{{this.params.logo}}',\n    {{this.params.qty || 0}},\n    '{{this.params.instructions}}',\n    'Not Started'\n);",
+      "body": "INSERT INTO export_orders (order_no, order_date, item_size, color, folding_type, logo, ordered_qty, instructions, status)\nVALUES (\n    '{{this.params.order_no}}',\n    '{{this.params.order_date}}',\n    '{{this.params.size}}',\n    '{{this.params.color}}',\n    '{{this.params.folding_type}}', \n    '{{this.params.logo}}',\n    {{this.params.qty || 0}},\n    '{{this.params.instructions}}',\n    'Not Started'\n);",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
