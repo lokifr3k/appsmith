@@ -1,15 +1,14 @@
 {
   "animateLoading": true,
-  "backgroundColor": "#b4af9c",
-  "borderRadius": "1.5rem",
-  "bottomRow": 530,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 600,
   "boxShadow": "none",
   "canEscapeKeyClose": true,
-  "canOutsideClickClose": false,
+  "canOutsideClickClose": true,
   "children": [
     {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-      "bottomRow": 530,
+      "bottomRow": 600,
       "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
       "canExtend": true,
       "detachFromLayout": true,
@@ -26,11 +25,11 @@
       "isDisabled": false,
       "isLoading": false,
       "isVisible": true,
-      "key": "ozgdb27wpk",
+      "key": "61cd02bjf4",
       "leftColumn": 0,
       "maxDynamicHeight": 9000,
       "minDynamicHeight": 4,
-      "minHeight": 570,
+      "minHeight": 600,
       "minWidth": 450,
       "mobileBottomRow": 0,
       "mobileLeftColumn": 0,
@@ -38,7 +37,7 @@
       "mobileTopRow": 0,
       "needsErrorInfo": false,
       "parentColumnSpace": 1,
-      "parentId": "v1yfz4vwd6",
+      "parentId": "0hxpvbqtyp",
       "parentRowSpace": 1,
       "renderMode": "CANVAS",
       "responsiveBehavior": "fill",
@@ -47,22 +46,25 @@
       "topRow": 0,
       "type": "CANVAS_WIDGET",
       "version": 1,
-      "widgetId": "ofi4kkagxq",
-      "widgetName": "Canvas10"
+      "widgetId": "i9d121p48r",
+      "widgetName": "Canvas21"
     }
   ],
   "detachFromLayout": true,
-  "dynamicBindingPathList": [],
+  "dynamicBindingPathList": [
+    {
+      "key": "borderRadius"
+    }
+  ],
   "dynamicHeight": "AUTO_HEIGHT",
-  "dynamicTriggerPathList": [],
-  "height": 530,
+  "height": 600,
   "isCanvas": true,
   "isLoading": false,
-  "key": "yooidknrlq",
+  "key": "09bmbus99v",
   "leftColumn": 0,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 24,
-  "minHeight": 530,
+  "minHeight": 600,
   "mobileBottomRow": 0,
   "mobileLeftColumn": 0,
   "mobileRightColumn": 0,
@@ -77,7 +79,7 @@
   "topRow": 0,
   "type": "MODAL_WIDGET",
   "version": 2,
-  "widgetId": "v1yfz4vwd6",
-  "widgetName": "AddOrderModal",
-  "width": 928
+  "widgetId": "0hxpvbqtyp",
+  "widgetName": "mod_create_shipment",
+  "width": 884
 }

@@ -1,0 +1,9 @@
+INSERT INTO item_masters (item_size, folding_type, fabric_width, pcs_per_meter, pcs_per_carton, price_per_pc)
+VALUES (
+    UPPER('{{tbl_item_masters.newRow.item_size}}'),
+    UPPER('{{tbl_item_masters.newRow.folding_type || ""}}'),
+    {{tbl_item_masters.newRow.fabric_width || 0}},
+    {{tbl_item_masters.newRow.pcs_per_meter || 0}},
+    {{tbl_item_masters.newRow.pcs_per_carton || 0}},
+    {{tbl_item_masters.newRow.price_per_pc || 0}}
+);

@@ -1,7 +1,7 @@
 -- Erase it from the orders table
 UPDATE export_orders 
 SET folding_type = '' 
-WHERE folding_type = 'Standard';
+WHERE folding_type = '';
 
 -- Erase it from the item master table
 UPDATE item_masters 

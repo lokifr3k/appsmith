@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "-- Erase it from the orders table\nUPDATE export_orders \nSET folding_type = '' \nWHERE folding_type = 'Standard';\n\n-- Erase it from the item master table\nUPDATE item_masters \nSET folding_type = '' \nWHERE folding_type = 'Standard';",
+      "body": "-- Erase it from the orders table\nUPDATE export_orders \nSET folding_type = '' \nWHERE folding_type = '';\n\n-- Erase it from the item master table\nUPDATE item_masters \nSET folding_type = '' \nWHERE folding_type = 'Standard';",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
