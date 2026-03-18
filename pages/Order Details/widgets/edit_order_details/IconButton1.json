@@ -31,7 +31,7 @@
   "mobileRightColumn": 64,
   "mobileTopRow": 0,
   "needsErrorInfo": false,
-  "onClick": "{{closeModal(edit_order_details.name);\nget_all_orders.run()}}",
+  "onClick": "{{closeModal(edit_order_details.name);\nget_all_orders.run();\nget_active_orders.run()}}",
   "parentId": "g1mmc7grx6",
   "renderMode": "CANVAS",
   "responsiveBehavior": "hug",
