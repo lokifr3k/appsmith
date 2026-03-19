@@ -1,15 +1,3 @@
--- Clean export_orders
 UPDATE export_orders 
-SET folding_type = '' 
-WHERE folding_type IS NULL 
-   OR folding_type ILIKE 'null' 
-   OR folding_type ILIKE 'undefined' 
-   OR TRIM(folding_type) = '';
-
--- Clean item_masters
-UPDATE item_masters 
-SET folding_type = '' 
-WHERE folding_type IS NULL 
-   OR folding_type ILIKE 'null' 
-   OR folding_type ILIKE 'undefined' 
-   OR TRIM(folding_type) = '';
+SET item_size = UPPER(item_size) 
+WHERE item_size ILIKE '%x%';

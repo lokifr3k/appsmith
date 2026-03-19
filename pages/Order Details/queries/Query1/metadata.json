@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "-- Clean export_orders\nUPDATE export_orders \nSET folding_type = '' \nWHERE folding_type IS NULL \n   OR folding_type ILIKE 'null' \n   OR folding_type ILIKE 'undefined' \n   OR TRIM(folding_type) = '';\n\n-- Clean item_masters\nUPDATE item_masters \nSET folding_type = '' \nWHERE folding_type IS NULL \n   OR folding_type ILIKE 'null' \n   OR folding_type ILIKE 'undefined' \n   OR TRIM(folding_type) = '';",
+      "body": "UPDATE export_orders \nSET item_size = UPPER(item_size) \nWHERE item_size ILIKE '%x%';",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

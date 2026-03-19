@@ -1,6 +1,6 @@
 UPDATE export_orders
 SET 
-    item_size = '{{inp_edit_size.text}}',
+    item_size = UPPER('{{inp_edit_size.text}}'),
     color = '{{inp_edit_color.text}}',
     logo = '{{inp_edit_logo.text}}',
     ordered_qty = {{inp_edit_qty.text || 0}},

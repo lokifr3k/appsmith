@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "UPDATE export_orders\nSET \n    item_size = '{{inp_edit_size.text}}',\n    color = '{{inp_edit_color.text}}',\n    logo = '{{inp_edit_logo.text}}',\n    ordered_qty = {{inp_edit_qty.text || 0}},\n    folding_type = '{{inp_edit_fold_type.text}}',\n    instructions = '{{inp_edit_inst.text}}'\nWHERE order_no = '{{sel_edit_order.selectedOptionValue}}';",
+      "body": "UPDATE export_orders\nSET \n    item_size = UPPER('{{inp_edit_size.text}}'),\n    color = '{{inp_edit_color.text}}',\n    logo = '{{inp_edit_logo.text}}',\n    ordered_qty = {{inp_edit_qty.text || 0}},\n    folding_type = '{{inp_edit_fold_type.text}}',\n    instructions = '{{inp_edit_inst.text}}'\nWHERE order_no = '{{sel_edit_order.selectedOptionValue}}';",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

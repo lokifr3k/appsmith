@@ -1,20 +1,39 @@
+WITH FactoryMath AS (
+    SELECT 
+        si.order_no,
+        eo.item_size,
+        eo.color,
+        eo.folding_type,
+        eo.logo,
+        si.cartons,
+        si.target_qty AS required_pcs,
+        COALESCE(eo.produced_qty, 0) AS printed_qty,
+        -- Calculate Folded Stock: What is printed MINUS what is still waiting to be folded
+        GREATEST(0, COALESCE(eo.produced_qty, 0) - COALESCE(eo.balance_qty, 0)) AS folded_qty
+    FROM shipment_items si
+    LEFT JOIN export_orders eo ON si.order_no = eo.order_no
+    WHERE si.shipment_id = {{tbl_shipments.selectedRow.id || 0}}
+)
 SELECT 
-    si.order_no,
-    eo.item_size,
-    eo.color,
-    eo.folding_type,
-    eo.logo,
-    si.cartons,
-    si.target_qty AS required_pcs,
-    eo.produced_qty AS printed_qty,
-    eo.balance_qty AS pending_to_fold,
+    order_no,
+    item_size,
+    color,
+    folding_type,
+    logo,
+    cartons,
+    required_pcs,
+    
+    -- SMART CALCULATORS:
+    -- If we have more printed/folded than we need, it outputs 0 (Nothing to do!)
+    -- If we are short, it outputs exactly how many are missing.
+    GREATEST(0, required_pcs - printed_qty) AS qty_to_print,
+    GREATEST(0, required_pcs - folded_qty) AS qty_to_fold,
+
+    -- DYNAMIC FACTORY STATUS
     CASE 
-        WHEN eo.status = 'Completed' THEN 'Completed'
-        WHEN eo.balance_qty <= 0 AND eo.produced_qty > 0 THEN 'Fully Folded'
-        WHEN eo.produced_qty >= eo.ordered_qty THEN 'Fully Printed'
-        WHEN eo.produced_qty > 0 THEN 'In Production'
-        ELSE 'Not Started'
-    END AS live_status
-FROM shipment_items si
-LEFT JOIN export_orders eo ON si.order_no = eo.order_no
-WHERE si.shipment_id = {{tbl_shipments.selectedRow.id || 0}};
+        WHEN GREATEST(0, required_pcs - folded_qty) = 0 THEN '🟢 Ready to Load'
+        WHEN GREATEST(0, required_pcs - printed_qty) = 0 THEN '🟡 Needs Folding'
+        ELSE '🔴 Needs Printing'
+    END AS action_status
+
+FROM FactoryMath;
