@@ -1,0 +1,20 @@
+SELECT 
+    si.order_no,
+    eo.item_size,
+    eo.color,
+    eo.folding_type,
+    eo.logo,
+    si.cartons,
+    si.target_qty AS required_pcs,
+    eo.produced_qty AS printed_qty,
+    eo.balance_qty AS pending_to_fold,
+    CASE 
+        WHEN eo.status = 'Completed' THEN 'Completed'
+        WHEN eo.balance_qty <= 0 AND eo.produced_qty > 0 THEN 'Fully Folded'
+        WHEN eo.produced_qty >= eo.ordered_qty THEN 'Fully Printed'
+        WHEN eo.produced_qty > 0 THEN 'In Production'
+        ELSE 'Not Started'
+    END AS live_status
+FROM shipment_items si
+LEFT JOIN export_orders eo ON si.order_no = eo.order_no
+WHERE si.shipment_id = {{tbl_shipments.selectedRow.id || 0}};

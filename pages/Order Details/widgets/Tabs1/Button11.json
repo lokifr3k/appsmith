@@ -1,12 +1,15 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 4,
+  "bottomRow": 35,
   "boxShadow": "none",
-  "buttonColor": "#3b82f6",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
   "buttonVariant": "PRIMARY",
   "disabledWhenInvalid": false,
   "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
     {
       "key": "borderRadius"
     }
@@ -20,15 +23,15 @@
   "isDisabled": false,
   "isLoading": false,
   "isVisible": true,
-  "key": "kfa9r1xalj",
-  "leftColumn": 47,
+  "key": "5scebxshlt",
+  "leftColumn": 5,
   "minWidth": 120,
-  "mobileBottomRow": 8,
-  "mobileLeftColumn": 17,
-  "mobileRightColumn": 33,
-  "mobileTopRow": 4,
+  "mobileBottomRow": 35,
+  "mobileLeftColumn": 5,
+  "mobileRightColumn": 21,
+  "mobileTopRow": 31,
   "needsErrorInfo": false,
-  "onClick": "{{showModal(mod_create_shipment.name);}}",
+  "onClick": "{{showModal(mod_shipment_details.name);}}",
   "parentColumnSpace": 18.65625,
   "parentId": "ex91tu4z6w",
   "parentRowSpace": 10,
@@ -37,11 +40,11 @@
   "renderMode": "CANVAS",
   "resetFormOnClick": false,
   "responsiveBehavior": "hug",
-  "rightColumn": 63,
-  "text": "+ Create New Shipment",
-  "topRow": 0,
+  "rightColumn": 21,
+  "text": "Submit",
+  "topRow": 31,
   "type": "BUTTON_WIDGET",
   "version": 1,
-  "widgetId": "kj6z9mzeq4",
-  "widgetName": "Button8"
+  "widgetId": "6z3s1m0xzi",
+  "widgetName": "Button11"
 }

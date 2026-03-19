@@ -1,0 +1,8 @@
+INSERT INTO shipment_items (shipment_id, order_no, target_qty, cartons)
+VALUES (
+    -- This smart sub-query automatically finds the ID of the master shipment we just created!
+    (SELECT id FROM shipments WHERE shipment_no = '{{inp_shipment_no.text}}'), 
+    '{{this.params.order_no}}',
+    {{this.params.target_qty || 0}},
+    '{{this.params.total_cartons || 0}}'
+);
