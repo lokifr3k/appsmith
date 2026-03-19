@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 58,
+  "bottomRow": 72,
   "boxShadow": "none",
   "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
   "buttonStyle": "PRIMARY_BUTTON",
@@ -43,7 +43,7 @@
   "responsiveBehavior": "hug",
   "rightColumn": 46,
   "text": "Save Shipment",
-  "topRow": 54,
+  "topRow": 68,
   "type": "BUTTON_WIDGET",
   "version": 1,
   "widgetId": "rb1my4zlmu",
