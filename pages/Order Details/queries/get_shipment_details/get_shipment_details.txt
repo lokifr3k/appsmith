@@ -1,4 +1,4 @@
-WITH FactoryMath AS (
+WITH RawData AS (
     SELECT 
         si.order_no,
         eo.item_size,
@@ -6,17 +6,25 @@ WITH FactoryMath AS (
         eo.folding_type,
         eo.logo,
         si.cartons,
-        si.target_qty AS required_pcs,
-        
-        -- Available Printed: Total Printed MINUS what already left on a truck
-        GREATEST(0, COALESCE(eo.produced_qty, 0) - COALESCE(eo.sent_qty, 0)) AS available_printed,
-        
-        -- THE FIX: Use produced_qty instead of ordered_qty so it includes the 2,400 extra pieces!
-        GREATEST(0, (COALESCE(eo.produced_qty, 0) - COALESCE(eo.balance_qty, 0)) - COALESCE(eo.sent_qty, 0)) AS available_folded
-        
+        si.target_qty,
+        COALESCE(eo.stock_qty, 0) AS stock,
+        COALESCE(eo.sent_qty, 0) AS sent,
+        COALESCE(eo.produced_qty, 0) AS produced,
+        COALESCE(eo.folded_qty, 0) AS folded 
     FROM shipment_items si
     LEFT JOIN export_orders eo ON si.order_no = eo.order_no
     WHERE si.shipment_id = {{tbl_shipments.selectedRow.id || 0}}
+),
+FactoryMath AS (
+    SELECT 
+        *,
+        -- Step 1: Calculate New Target
+        GREATEST(0, target_qty - stock) AS new_target,
+        
+        -- Step 2: Calculate Current WIP (Work in Progress) sitting on the factory floor
+        GREATEST(0, produced - (stock + sent)) AS current_prod_at_factory,
+        GREATEST(0, folded - (stock + sent)) AS current_fold_at_factory
+    FROM RawData
 )
 SELECT 
     order_no,
@@ -25,16 +33,25 @@ SELECT
     folding_type,
     logo,
     cartons,
-    required_pcs,
+    target_qty AS required_pcs,
     
-    -- FACTORY TO-DO LIST
-    GREATEST(0, required_pcs - available_printed) AS qty_to_print,
-    GREATEST(0, required_pcs - available_folded) AS qty_to_fold,
+    -- THE PRINT CALCULATION (Applies the 8% rejection buffer to the new target)
+    CASE 
+        WHEN stock >= target_qty THEN 0
+        ELSE GREATEST(0, CEIL((new_target * 1.08) - current_prod_at_factory))
+    END AS qty_to_print,
+    
+    -- THE FOLD CALCULATION
+    CASE 
+        WHEN stock >= target_qty THEN 0
+        ELSE GREATEST(0, new_target - current_fold_at_factory)
+    END AS qty_to_fold,
 
     -- DYNAMIC FACTORY STATUS
     CASE 
-        WHEN GREATEST(0, required_pcs - available_folded) = 0 THEN '🟢 Ready to Load'
-        WHEN GREATEST(0, required_pcs - available_printed) = 0 THEN '🟡 Needs Folding'
+        WHEN stock >= target_qty THEN '🟢 Ready to Load (From Stock)'
+        WHEN GREATEST(0, new_target - current_fold_at_factory) <= 0 THEN '🟢 Ready to Load'
+        WHEN GREATEST(0, CEIL((new_target * 1.08) - current_prod_at_factory)) <= 0 THEN '🟡 Needs Folding'
         ELSE '🔴 Needs Printing'
     END AS action_status
 
