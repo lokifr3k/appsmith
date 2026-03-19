@@ -7,9 +7,13 @@ WITH FactoryMath AS (
         eo.logo,
         si.cartons,
         si.target_qty AS required_pcs,
-        COALESCE(eo.produced_qty, 0) AS printed_qty,
-        -- Calculate Folded Stock: What is printed MINUS what is still waiting to be folded
-        GREATEST(0, COALESCE(eo.produced_qty, 0) - COALESCE(eo.balance_qty, 0)) AS folded_qty
+        
+        -- 1. Available Printed: Total Printed MINUS what already left on a truck
+        GREATEST(0, COALESCE(eo.produced_qty, 0) - COALESCE(eo.sent_qty, 0)) AS available_printed,
+        
+        -- 2. Available Folded: (Ordered - Balance = Total Folded) MINUS what already left on a truck
+        GREATEST(0, (COALESCE(eo.ordered_qty, 0) - COALESCE(eo.balance_qty, 0)) - COALESCE(eo.sent_qty, 0)) AS available_folded
+        
     FROM shipment_items si
     LEFT JOIN export_orders eo ON si.order_no = eo.order_no
     WHERE si.shipment_id = {{tbl_shipments.selectedRow.id || 0}}
@@ -23,16 +27,14 @@ SELECT
     cartons,
     required_pcs,
     
-    -- SMART CALCULATORS:
-    -- If we have more printed/folded than we need, it outputs 0 (Nothing to do!)
-    -- If we are short, it outputs exactly how many are missing.
-    GREATEST(0, required_pcs - printed_qty) AS qty_to_print,
-    GREATEST(0, required_pcs - folded_qty) AS qty_to_fold,
+    -- FACTORY TO-DO LIST (Comparing Required against Net Available Stock)
+    GREATEST(0, required_pcs - available_printed) AS qty_to_print,
+    GREATEST(0, required_pcs - available_folded) AS qty_to_fold,
 
     -- DYNAMIC FACTORY STATUS
     CASE 
-        WHEN GREATEST(0, required_pcs - folded_qty) = 0 THEN '🟢 Ready to Load'
-        WHEN GREATEST(0, required_pcs - printed_qty) = 0 THEN '🟡 Needs Folding'
+        WHEN GREATEST(0, required_pcs - available_folded) = 0 THEN '🟢 Ready to Load'
+        WHEN GREATEST(0, required_pcs - available_printed) = 0 THEN '🟡 Needs Folding'
         ELSE '🔴 Needs Printing'
     END AS action_status
 
