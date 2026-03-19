@@ -8,11 +8,11 @@ WITH FactoryMath AS (
         si.cartons,
         si.target_qty AS required_pcs,
         
-        -- 1. Available Printed: Total Printed MINUS what already left on a truck
+        -- Available Printed: Total Printed MINUS what already left on a truck
         GREATEST(0, COALESCE(eo.produced_qty, 0) - COALESCE(eo.sent_qty, 0)) AS available_printed,
         
-        -- 2. Available Folded: (Ordered - Balance = Total Folded) MINUS what already left on a truck
-        GREATEST(0, (COALESCE(eo.ordered_qty, 0) - COALESCE(eo.balance_qty, 0)) - COALESCE(eo.sent_qty, 0)) AS available_folded
+        -- THE FIX: Use produced_qty instead of ordered_qty so it includes the 2,400 extra pieces!
+        GREATEST(0, (COALESCE(eo.produced_qty, 0) - COALESCE(eo.balance_qty, 0)) - COALESCE(eo.sent_qty, 0)) AS available_folded
         
     FROM shipment_items si
     LEFT JOIN export_orders eo ON si.order_no = eo.order_no
@@ -27,7 +27,7 @@ SELECT
     cartons,
     required_pcs,
     
-    -- FACTORY TO-DO LIST (Comparing Required against Net Available Stock)
+    -- FACTORY TO-DO LIST
     GREATEST(0, required_pcs - available_printed) AS qty_to_print,
     GREATEST(0, required_pcs - available_folded) AS qty_to_fold,
 
