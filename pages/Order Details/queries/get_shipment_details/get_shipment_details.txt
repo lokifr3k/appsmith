@@ -55,4 +55,5 @@ SELECT
         ELSE '🔴 Needs Printing'
     END AS action_status
 
-FROM FactoryMath;
+FROM FactoryMath
+ORDER BY order_no ASC;  -- <-- The magic sorting line!
