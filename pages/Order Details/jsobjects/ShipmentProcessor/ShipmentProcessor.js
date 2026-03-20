@@ -36,6 +36,7 @@ export default {
             await get_shipment_details.run();
             
             // 8. Clean up the UI
+						closeModal('mod_confirm_dispatch');
             resetWidget('inp_invoice_no', true);
             resetWidget('dat_invoice_date', true);
             showAlert('Shipment Dispatched & Stock Updated Successfully!', 'success');
