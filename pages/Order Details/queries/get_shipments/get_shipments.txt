@@ -1,2 +1,1 @@
-SELECT * FROM shipments 
-ORDER BY shipment_date ASC, id DESC;
+SELECT * FROM shipments ORDER BY id DESC;

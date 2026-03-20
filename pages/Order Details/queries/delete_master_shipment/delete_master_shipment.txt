@@ -1,0 +1,4 @@
+-- First delete the items inside the container
+DELETE FROM shipment_items WHERE shipment_id = {{tbl_shipments.triggeredRow.id}};
+-- Then delete the master container itself
+DELETE FROM shipments WHERE id = {{tbl_shipments.triggeredRow.id}};

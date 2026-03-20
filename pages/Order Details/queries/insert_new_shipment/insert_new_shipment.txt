@@ -1,6 +1,5 @@
 INSERT INTO shipments (shipment_no, shipment_date, status)
 VALUES (
     '{{inp_shipment_no.text}}', 
-    '{{dat_shipment_date.formattedDate}}', 
     'Pending'
 );

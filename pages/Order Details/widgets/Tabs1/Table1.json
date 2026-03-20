@@ -79,6 +79,7 @@
     "status": 107,
     "stock_qty": 79
   },
+  "compactMode": "SHORT",
   "customIsLoading": false,
   "customIsLoadingValue": "",
   "defaultPageSize": 0,

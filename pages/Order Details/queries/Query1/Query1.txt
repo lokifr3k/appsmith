@@ -1,3 +1,6 @@
-UPDATE export_orders 
-SET item_size = UPPER(item_size) 
-WHERE item_size ILIKE '%x%';
+-- Remove the old date column
+ALTER TABLE shipments DROP COLUMN IF EXISTS shipment_date;
+
+-- Add the new invoice columns
+
+ALTER TABLE shipments ADD COLUMN invoice_date DATE;

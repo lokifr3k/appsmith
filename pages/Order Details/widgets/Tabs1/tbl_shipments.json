@@ -37,10 +37,11 @@
     "shipment_no",
     "invoice_no",
     "status",
-    "shipment_date",
-    "created_at"
+    "created_at",
+    "invoice_date",
+    "customColumn1"
   ],
-  "columnUpdatedAt": 1773977414075,
+  "columnUpdatedAt": 1773981186541,
   "columnWidthMap": {
     "id": 60,
     "invoice_no": 95,
@@ -72,9 +73,6 @@
       "key": "primaryColumns.shipment_no.computedValue"
     },
     {
-      "key": "primaryColumns.shipment_date.computedValue"
-    },
-    {
       "key": "primaryColumns.status.computedValue"
     },
     {
@@ -82,16 +80,37 @@
     },
     {
       "key": "primaryColumns.created_at.computedValue"
+    },
+    {
+      "key": "primaryColumns.invoice_date.computedValue"
+    },
+    {
+      "key": "primaryColumns.customColumn1.buttonColor"
+    },
+    {
+      "key": "primaryColumns.customColumn1.borderRadius"
+    },
+    {
+      "key": "primaryColumns.customColumn1.boxShadow"
+    },
+    {
+      "key": "primaryColumns.customColumn1.isDisabled"
     }
   ],
   "dynamicPropertyPathList": [
     {
       "key": "tableData"
+    },
+    {
+      "key": "primaryColumns.customColumn1.isDisabled"
     }
   ],
   "dynamicTriggerPathList": [
     {
       "key": "onRowSelected"
+    },
+    {
+      "key": "primaryColumns.customColumn1.onClick"
     }
   ],
   "enableClientSideSearch": true,
@@ -153,6 +172,46 @@
       "verticalAlignment": "CENTER",
       "width": 150
     },
+    "customColumn1": {
+      "alias": "Delete",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "borderRadius": "{{tbl_shipments.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
+      "boxShadow": "{{tbl_shipments.processedTableData.map((currentRow, currentIndex) => ( \"none\"))}}",
+      "buttonColor": "{{tbl_shipments.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.colors.primaryColor)))}}",
+      "buttonStyle": "rgb(3, 179, 101)",
+      "cellBackground": "#d4d4d8",
+      "columnType": "iconButton",
+      "computedValue": "",
+      "currencyCode": "USD",
+      "customAlias": "",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "iconName": "trash",
+      "id": "customColumn1",
+      "index": 6,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": true,
+      "isDisabled": "{{(() => { const tableData = tbl_shipments.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow.status !== 'Pending')) : currentRow.status !== 'Pending' })()}}",
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Delete",
+      "labelColor": "#FFFFFF",
+      "notation": "standard",
+      "onClick": "{{delete_master_shipment.run().then(() => {\n  get_shipments.run();\n});}}",
+      "originalId": "customColumn1",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
     "id": {
       "alias": "id",
       "allowCellWrapping": false,
@@ -185,6 +244,40 @@
       "verticalAlignment": "CENTER",
       "width": 150
     },
+    "invoice_date": {
+      "alias": "invoice_date",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "#d4d4d8",
+      "columnType": "text",
+      "computedValue": "{{(() => { const tableData = tbl_shipments.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"invoice_date\"])) : invoice_date })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "LEFT",
+      "id": "invoice_date",
+      "index": 5,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "invoice_date",
+      "notation": "standard",
+      "originalId": "invoice_date",
+      "sticky": "",
+      "textColor": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
     "invoice_no": {
       "alias": "invoice_no",
       "allowCellWrapping": false,
@@ -210,39 +303,6 @@
       "label": "invoice_no",
       "notation": "standard",
       "originalId": "invoice_no",
-      "sticky": "",
-      "textSize": "0.875rem",
-      "thousandSeparator": true,
-      "validation": {},
-      "verticalAlignment": "CENTER",
-      "width": 150
-    },
-    "shipment_date": {
-      "alias": "shipment_date",
-      "allowCellWrapping": false,
-      "allowSameOptionsInNewRow": true,
-      "cellBackground": "#d4d4d8",
-      "columnType": "date",
-      "computedValue": "{{(() => { const tableData = tbl_shipments.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"shipment_date\"])) : shipment_date })()}}",
-      "currencyCode": "USD",
-      "decimals": 0,
-      "enableFilter": true,
-      "enableSort": true,
-      "horizontalAlignment": "LEFT",
-      "id": "shipment_date",
-      "index": 2,
-      "isCellEditable": false,
-      "isCellVisible": true,
-      "isDerived": false,
-      "isDisabled": false,
-      "isDiscardVisible": true,
-      "isEditable": false,
-      "isSaveVisible": true,
-      "isVisible": true,
-      "label": "shipment_date",
-      "notation": "standard",
-      "originalId": "shipment_date",
-      "outputFormat": "DD/MM/YYYY",
       "sticky": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,

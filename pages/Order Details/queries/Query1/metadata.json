@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "UPDATE export_orders \nSET item_size = UPPER(item_size) \nWHERE item_size ILIKE '%x%';",
+      "body": "-- Remove the old date column\nALTER TABLE shipments DROP COLUMN IF EXISTS shipment_date;\n\n-- Add the new invoice columns\n\nALTER TABLE shipments ADD COLUMN invoice_date DATE;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
