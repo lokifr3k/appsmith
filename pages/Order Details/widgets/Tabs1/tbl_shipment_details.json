@@ -5,7 +5,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 69,
+  "bottomRow": 95,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,
@@ -46,7 +46,7 @@
     "customColumn1",
     "EditActions1"
   ],
-  "columnUpdatedAt": 1773978408867,
+  "columnUpdatedAt": 1773979371667,
   "columnWidthMap": {
     "cartons": 60,
     "color": 98,
