@@ -1,11 +1,11 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 64,
+  "bottomRow": 49,
   "boxShadow": "none",
   "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
   "buttonVariant": "PRIMARY",
-  "disabledWhenInvalid": "{{tbl_shipments.selectedRow.status !== 'Pending'}}",
+  "disabledWhenInvalid": false,
   "dynamicBindingPathList": [
     {
       "key": "buttonColor"
@@ -14,12 +14,12 @@
       "key": "borderRadius"
     },
     {
-      "key": "disabledWhenInvalid"
+      "key": "isDisabled"
     }
   ],
   "dynamicPropertyPathList": [
     {
-      "key": "disabledWhenInvalid"
+      "key": "isDisabled"
     }
   ],
   "dynamicTriggerPathList": [
@@ -28,18 +28,18 @@
     }
   ],
   "isDefaultClickDisabled": true,
-  "isDisabled": false,
+  "isDisabled": "{{!tbl_shipments.selectedRow.id}}",
   "isLoading": false,
   "isVisible": true,
-  "key": "8zfabzc60n",
-  "leftColumn": 3,
+  "key": "qzewr72gu6",
+  "leftColumn": 4,
   "minWidth": 120,
-  "mobileBottomRow": 65,
+  "mobileBottomRow": 62,
   "mobileLeftColumn": 0,
-  "mobileRightColumn": 7,
-  "mobileTopRow": 61,
+  "mobileRightColumn": 2,
+  "mobileTopRow": 58,
   "needsErrorInfo": false,
-  "onClick": "{{showModal(mod_confirm_dispatch.name);}}",
+  "onClick": "{{get_packing_list.run().then(() => {\n  showModal(mod_packing_list.name);\n});}}",
   "parentColumnSpace": 18.65625,
   "parentId": "ex91tu4z6w",
   "parentRowSpace": 10,
@@ -48,11 +48,11 @@
   "renderMode": "CANVAS",
   "resetFormOnClick": false,
   "responsiveBehavior": "hug",
-  "rightColumn": 12,
-  "text": "Mark as Dispatched\n",
-  "topRow": 57,
+  "rightColumn": 13,
+  "text": "Generate Packing List",
+  "topRow": 45,
   "type": "BUTTON_WIDGET",
   "version": 1,
-  "widgetId": "9eow0jcwb3",
-  "widgetName": "Button11"
+  "widgetId": "7hcta7va5n",
+  "widgetName": "Button16"
 }

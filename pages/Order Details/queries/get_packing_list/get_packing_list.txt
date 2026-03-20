@@ -1,0 +1,21 @@
+WITH RankedCartons AS (
+    SELECT 
+        si.order_no,
+        CONCAT_WS(' ', eo.item_size, eo.color, eo.logo, eo.folding_type) AS item_description,
+        si.cartons,
+        si.target_qty AS qty,
+        -- We added ::numeric inside the SUM functions to force the math!
+        COALESCE(SUM(si.cartons::numeric) OVER (ORDER BY si.order_no ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING), 0) + 1 AS start_carton,
+        SUM(si.cartons::numeric) OVER (ORDER BY si.order_no) AS end_carton
+    FROM shipment_items si
+    LEFT JOIN export_orders eo ON si.order_no = eo.order_no
+    WHERE si.shipment_id = {{tbl_shipments.selectedRow.id || 0}}
+)
+SELECT 
+    order_no,
+    item_description,
+    cartons,
+    qty AS total_pcs,
+    start_carton || ' TO ' || end_carton AS carton_no
+FROM RankedCartons
+ORDER BY order_no ASC;
