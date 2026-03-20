@@ -1,4 +1,4 @@
-INSERT INTO shipments (shipment_no, shipment_date, status)
+INSERT INTO shipments (shipment_no, status)
 VALUES (
     '{{inp_shipment_no.text}}', 
     'Pending'
