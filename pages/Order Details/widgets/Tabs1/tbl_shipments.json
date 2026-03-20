@@ -1,13 +1,14 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
-  "borderColor": "#E0DEDE",
-  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "borderColor": "#d4d4d8",
+  "borderRadius": "1.5rem",
   "borderWidth": "1",
-  "bottomRow": 31,
+  "bottomRow": 61,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,
+  "cellBackground": "#d4d4d8",
   "childStylesheet": {
     "button": {
       "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
@@ -34,13 +35,18 @@
   "columnOrder": [
     "id",
     "shipment_no",
-    "shipment_date",
-    "status",
     "invoice_no",
+    "status",
+    "shipment_date",
     "created_at"
   ],
-  "columnUpdatedAt": 1773896606357,
-  "columnWidthMap": {},
+  "columnUpdatedAt": 1773977414075,
+  "columnWidthMap": {
+    "id": 60,
+    "invoice_no": 95,
+    "shipment_no": 87,
+    "status": 138
+  },
   "customIsLoading": false,
   "customIsLoadingValue": "",
   "defaultPageSize": 0,
@@ -52,9 +58,6 @@
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
-    },
-    {
-      "key": "borderRadius"
     },
     {
       "key": "boxShadow"
@@ -97,6 +100,7 @@
   "enableClientSideSearch": true,
   "endOfData": false,
   "flexVerticalAlignment": "start",
+  "headerRowColor": "#999999",
   "horizontalAlignment": "LEFT",
   "inlineEditingSaveOption": "ROW_LEVEL",
   "isLoading": false,
@@ -108,7 +112,7 @@
   "isVisibleSearch": true,
   "key": "fx39mn4dze",
   "label": "Data",
-  "leftColumn": 1,
+  "leftColumn": 0,
   "minWidth": 450,
   "mobileBottomRow": 33,
   "mobileLeftColumn": 1,
@@ -124,6 +128,7 @@
       "alias": "created_at",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "#d4d4d8",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = tbl_shipments.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"created_at\"])) : created_at })()}}",
       "currencyCode": "USD",
@@ -155,6 +160,7 @@
       "alias": "id",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "#d4d4d8",
       "columnType": "number",
       "computedValue": "{{(() => { const tableData = tbl_shipments.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"id\"])) : id })()}}",
       "currencyCode": "USD",
@@ -186,6 +192,7 @@
       "alias": "invoice_no",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "#d4d4d8",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = tbl_shipments.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"invoice_no\"])) : invoice_no })()}}",
       "currencyCode": "USD",
@@ -217,6 +224,7 @@
       "alias": "shipment_date",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "#d4d4d8",
       "columnType": "date",
       "computedValue": "{{(() => { const tableData = tbl_shipments.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"shipment_date\"])) : shipment_date })()}}",
       "currencyCode": "USD",
@@ -237,6 +245,7 @@
       "label": "shipment_date",
       "notation": "standard",
       "originalId": "shipment_date",
+      "outputFormat": "DD/MM/YYYY",
       "sticky": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
@@ -248,6 +257,7 @@
       "alias": "shipment_no",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "#d4d4d8",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = tbl_shipments.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"shipment_no\"])) : shipment_no })()}}",
       "currencyCode": "USD",
@@ -279,6 +289,7 @@
       "alias": "status",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
+      "cellBackground": "#d4d4d8",
       "columnType": "text",
       "computedValue": "{{(() => { const tableData = tbl_shipments.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"status\"])) : status })()}}",
       "currencyCode": "USD",
@@ -309,7 +320,7 @@
   },
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 64,
+  "rightColumn": 17,
   "searchKey": "",
   "tableData": "{{get_shipments.data}}",
   "textSize": "0.875rem",
