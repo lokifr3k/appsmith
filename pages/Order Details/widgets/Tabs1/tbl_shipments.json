@@ -4,7 +4,7 @@
   "borderColor": "#d4d4d8",
   "borderRadius": "1.5rem",
   "borderWidth": "1",
-  "bottomRow": 61,
+  "bottomRow": 43,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,

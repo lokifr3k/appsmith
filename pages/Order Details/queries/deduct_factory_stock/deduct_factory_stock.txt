@@ -1,0 +1,5 @@
+UPDATE export_orders eo
+SET sent_qty = COALESCE(eo.sent_qty, 0) + si.target_qty
+FROM shipment_items si
+WHERE eo.order_no = si.order_no 
+  AND si.shipment_id = {{tbl_shipments.selectedRow.id}};
