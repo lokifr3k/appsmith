@@ -39,7 +39,7 @@
   "mobileRightColumn": 7,
   "mobileTopRow": 61,
   "needsErrorInfo": false,
-  "onClick": "{{mark_shipment_dispatched.run().then(() => {\n  deduct_factory_stock.run();\n  get_shipments.run();\n  showAlert('Shipment Dispatched & Stock Updated!', 'success');\n}).catch(() => {});}}",
+  "onClick": "{{ShipmentProcessor.dispatchShipment();}}",
   "parentColumnSpace": 18.65625,
   "parentId": "ex91tu4z6w",
   "parentRowSpace": 10,

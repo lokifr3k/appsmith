@@ -1,0 +1,11 @@
+{
+  "gitSyncId": "69ba3b2105a17f65449e0341_21b89ef5-6f62-480c-92f9-7be24465a4af",
+  "id": "Order Details_ShipmentProcessor",
+  "unpublishedCollection": {
+    "name": "ShipmentProcessor",
+    "pageId": "Order Details",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": []
+  }
+}
