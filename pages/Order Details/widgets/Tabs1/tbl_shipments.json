@@ -87,9 +87,6 @@
   "dynamicPropertyPathList": [
     {
       "key": "tableData"
-    },
-    {
-      "key": "onRowSelected"
     }
   ],
   "dynamicTriggerPathList": [
@@ -119,7 +116,7 @@
   "mobileRightColumn": 35,
   "mobileTopRow": 5,
   "needsErrorInfo": false,
-  "onRowSelected": "{{\n  get_shipment_details.run().then(() => {\n    showModal('mod_shipment_details');\n  })\n}}",
+  "onRowSelected": "{{get_shipment_details.run()}}",
   "parentColumnSpace": 18.65625,
   "parentId": "ex91tu4z6w",
   "parentRowSpace": 10,

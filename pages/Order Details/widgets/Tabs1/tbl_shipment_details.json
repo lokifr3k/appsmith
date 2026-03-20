@@ -1,5 +1,6 @@
 {
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "allowAddNewRow": true,
   "animateLoading": true,
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
@@ -41,9 +42,11 @@
     "required_pcs",
     "qty_to_print",
     "qty_to_fold",
-    "action_status"
+    "action_status",
+    "customColumn1",
+    "EditActions1"
   ],
-  "columnUpdatedAt": 1773918623977,
+  "columnUpdatedAt": 1773978408867,
   "columnWidthMap": {
     "cartons": 60,
     "color": 98,
@@ -106,14 +109,54 @@
     },
     {
       "key": "primaryColumns.action_status.computedValue"
+    },
+    {
+      "key": "primaryColumns.customColumn1.buttonColor"
+    },
+    {
+      "key": "primaryColumns.customColumn1.borderRadius"
+    },
+    {
+      "key": "primaryColumns.customColumn1.boxShadow"
+    },
+    {
+      "key": "primaryColumns.EditActions1.saveButtonColor"
+    },
+    {
+      "key": "primaryColumns.EditActions1.saveBorderRadius"
+    },
+    {
+      "key": "primaryColumns.EditActions1.discardBorderRadius"
+    },
+    {
+      "key": "primaryColumns.EditActions1.isSaveDisabled"
+    },
+    {
+      "key": "primaryColumns.EditActions1.isDiscardDisabled"
     }
   ],
   "dynamicPropertyPathList": [
     {
       "key": "tableData"
+    },
+    {
+      "key": "primaryColumns.EditActions1.isSaveDisabled"
+    },
+    {
+      "key": "primaryColumns.EditActions1.isDiscardDisabled"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "primaryColumns.customColumn1.onClick"
+    },
+    {
+      "key": "primaryColumns.cartons.onSubmit"
+    },
+    {
+      "key": "onAddNewRowSave"
+    }
+  ],
   "enableClientSideSearch": true,
   "endOfData": false,
   "flexVerticalAlignment": "start",
@@ -135,17 +178,58 @@
   "mobileRightColumn": 35,
   "mobileTopRow": 34,
   "needsErrorInfo": false,
+  "onAddNewRowSave": "{{add_shipment_order.run().then(() => {\n  get_shipment_details.run();\n});}}",
   "parentColumnSpace": 18.65625,
   "parentId": "ex91tu4z6w",
   "parentRowSpace": 10,
   "primaryColumns": {
+    "EditActions1": {
+      "alias": "EditActions1",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "buttonStyle": "rgb(3, 179, 101)",
+      "columnType": "editActions",
+      "computedValue": "",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "discardActionLabel": "Discard",
+      "discardBorderRadius": "{{tbl_shipment_details.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
+      "discardButtonColor": "#F22B2B",
+      "discardButtonVariant": "TERTIARY",
+      "discardIconAlign": "left",
+      "enableFilter": true,
+      "enableSort": true,
+      "id": "EditActions1",
+      "index": 10,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": true,
+      "isDisabled": false,
+      "isDiscardDisabled": "{{tbl_shipment_details.processedTableData.map((currentRow, currentIndex) => ( !tbl_shipment_details.updatedRowIndices.includes(currentIndex)))}}",
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveDisabled": "{{tbl_shipment_details.processedTableData.map((currentRow, currentIndex) => ( !tbl_shipment_details.updatedRowIndices.includes(currentIndex)))}}",
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Save / Discard",
+      "notation": "standard",
+      "originalId": "EditActions1",
+      "saveActionLabel": "Save",
+      "saveBorderRadius": "{{tbl_shipment_details.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
+      "saveButtonColor": "{{tbl_shipment_details.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.colors.primaryColor)))}}",
+      "saveIconAlign": "left",
+      "sticky": "right",
+      "thousandSeparator": true,
+      "validation": {},
+      "width": 150
+    },
     "action_status": {
       "alias": "action_status",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "cellBackground": "",
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = tbl_shipment_detailsCopy.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"action_status\"])) : action_status })()}}",
+      "computedValue": "{{(() => { const tableData = tbl_shipment_details.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"action_status\"])) : action_status })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -178,7 +262,7 @@
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = tbl_shipment_detailsCopy.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"cartons\"])) : cartons })()}}",
+      "computedValue": "{{(() => { const tableData = tbl_shipment_details.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"cartons\"])) : cartons })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -186,16 +270,17 @@
       "horizontalAlignment": "LEFT",
       "id": "cartons",
       "index": 4,
-      "isCellEditable": false,
+      "isCellEditable": true,
       "isCellVisible": true,
       "isDerived": false,
       "isDisabled": false,
       "isDiscardVisible": true,
-      "isEditable": false,
+      "isEditable": true,
       "isSaveVisible": true,
       "isVisible": true,
       "label": "cartons",
       "notation": "standard",
+      "onSubmit": "{{update_shipment_cartons.run().then(() => {\n  get_shipment_details.run();\n});}}",
       "originalId": "cartons",
       "sticky": "",
       "textSize": "0.875rem",
@@ -209,7 +294,7 @@
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = tbl_shipment_detailsCopy.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"color\"])) : color })()}}",
+      "computedValue": "{{(() => { const tableData = tbl_shipment_details.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"color\"])) : color })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -235,12 +320,51 @@
       "verticalAlignment": "CENTER",
       "width": 150
     },
+    "customColumn1": {
+      "alias": "Remove",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "borderRadius": "{{tbl_shipment_details.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
+      "boxShadow": "{{tbl_shipment_details.processedTableData.map((currentRow, currentIndex) => ( \"none\"))}}",
+      "buttonColor": "{{tbl_shipment_details.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.colors.primaryColor)))}}",
+      "buttonStyle": "rgb(3, 179, 101)",
+      "columnType": "iconButton",
+      "computedValue": "",
+      "currencyCode": "USD",
+      "customAlias": "",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "iconName": "trash",
+      "id": "customColumn1",
+      "index": 10,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": true,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Remove",
+      "labelColor": "#FFFFFF",
+      "notation": "standard",
+      "onClick": "{{delete_shipment_order.run().then(() => {\n  get_shipment_details.run();\n});}}",
+      "originalId": "customColumn1",
+      "sticky": "",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
     "folding_type": {
       "alias": "folding_type",
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = tbl_shipment_detailsCopy.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"folding_type\"])) : folding_type })()}}",
+      "computedValue": "{{(() => { const tableData = tbl_shipment_details.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"folding_type\"])) : folding_type })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -271,7 +395,7 @@
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = tbl_shipment_detailsCopy.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"item_size\"])) : item_size })()}}",
+      "computedValue": "{{(() => { const tableData = tbl_shipment_details.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"item_size\"])) : item_size })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -302,7 +426,7 @@
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = tbl_shipment_detailsCopy.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"logo\"])) : logo })()}}",
+      "computedValue": "{{(() => { const tableData = tbl_shipment_details.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"logo\"])) : logo })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -333,7 +457,7 @@
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "text",
-      "computedValue": "{{(() => { const tableData = tbl_shipment_detailsCopy.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"order_no\"])) : order_no })()}}",
+      "computedValue": "{{(() => { const tableData = tbl_shipment_details.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"order_no\"])) : order_no })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -341,12 +465,12 @@
       "horizontalAlignment": "LEFT",
       "id": "order_no",
       "index": 0,
-      "isCellEditable": false,
+      "isCellEditable": true,
       "isCellVisible": true,
       "isDerived": false,
       "isDisabled": false,
       "isDiscardVisible": true,
-      "isEditable": false,
+      "isEditable": true,
       "isSaveVisible": true,
       "isVisible": true,
       "label": "order_no",
@@ -365,7 +489,7 @@
       "allowSameOptionsInNewRow": true,
       "cellBackground": "",
       "columnType": "number",
-      "computedValue": "{{(() => { const tableData = tbl_shipment_detailsCopy.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"qty_to_fold\"])) : qty_to_fold })()}}",
+      "computedValue": "{{(() => { const tableData = tbl_shipment_details.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"qty_to_fold\"])) : qty_to_fold })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -399,7 +523,7 @@
       "allowSameOptionsInNewRow": true,
       "cellBackground": "",
       "columnType": "number",
-      "computedValue": "{{(() => { const tableData = tbl_shipment_detailsCopy.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"qty_to_print\"])) : qty_to_print })()}}",
+      "computedValue": "{{(() => { const tableData = tbl_shipment_details.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"qty_to_print\"])) : qty_to_print })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -432,7 +556,7 @@
       "allowCellWrapping": false,
       "allowSameOptionsInNewRow": true,
       "columnType": "number",
-      "computedValue": "{{(() => { const tableData = tbl_shipment_detailsCopy.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"required_pcs\"])) : required_pcs })()}}",
+      "computedValue": "{{(() => { const tableData = tbl_shipment_details.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"required_pcs\"])) : required_pcs })()}}",
       "currencyCode": "USD",
       "decimals": 0,
       "enableFilter": true,
@@ -463,6 +587,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 64,
   "searchKey": "",
+  "showInlineEditingOptionDropdown": true,
   "tableData": "{{get_shipment_details.data}}",
   "textSize": "0.875rem",
   "topRow": 4,
@@ -471,5 +596,5 @@
   "version": 2,
   "verticalAlignment": "CENTER",
   "widgetId": "1oxsf34e1t",
-  "widgetName": "tbl_shipment_detailsCopy"
+  "widgetName": "tbl_shipment_details"
 }

@@ -314,7 +314,7 @@
   "mobileTopRow": 10,
   "needsErrorInfo": false,
   "onTabSelected": "{{get_completed_dropdown_orders.run();\nget_all_order_logs.run()}}",
-  "originalBottomRow": 75,
+  "originalBottomRow": 74,
   "originalTopRow": 7,
   "parentColumnSpace": 18.96875,
   "parentId": "0",

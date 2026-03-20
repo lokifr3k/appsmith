@@ -1,0 +1,13 @@
+INSERT INTO shipment_items (shipment_id, order_no, cartons, target_qty)
+VALUES (
+    {{tbl_shipments.selectedRow.id}},
+    '{{tbl_shipment_details.newRow.order_no}}',
+    {{tbl_shipment_details.newRow.cartons}},
+    -- Calculates the pieces automatically!
+    {{tbl_shipment_details.newRow.cartons}} * COALESCE((
+        SELECT m.pcs_per_carton 
+        FROM export_orders o
+        LEFT JOIN item_masters m ON o.item_size = m.item_size AND o.folding_type = m.folding_type
+        WHERE o.order_no = '{{tbl_shipment_details.newRow.order_no}}'
+    ), 0)
+);

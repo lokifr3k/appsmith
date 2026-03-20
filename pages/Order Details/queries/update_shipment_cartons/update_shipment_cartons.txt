@@ -1,0 +1,12 @@
+UPDATE shipment_items 
+SET 
+    cartons = {{tbl_shipment_details.updatedRow.cartons}},
+    -- This smartly recalculates the target pieces based on your master sizes!
+    target_qty = {{tbl_shipment_details.updatedRow.cartons}} * COALESCE((
+        SELECT m.pcs_per_carton 
+        FROM export_orders o
+        LEFT JOIN item_masters m ON o.item_size = m.item_size AND o.folding_type = m.folding_type
+        WHERE o.order_no = '{{tbl_shipment_details.updatedRow.order_no}}'
+    ), 0)
+WHERE shipment_id = {{tbl_shipments.selectedRow.id}} 
+  AND order_no = '{{tbl_shipment_details.updatedRow.order_no}}';
