@@ -1,0 +1,10 @@
+SELECT 
+    TO_CHAR(order_date, 'Mon YYYY') AS month_label,
+    DATE_TRUNC('month', order_date) AS sort_date,
+    COUNT(order_no) AS total_orders,
+    SUM(ordered_qty) AS total_pieces
+FROM export_orders
+-- We filter out any blank dates just to keep the chart clean
+WHERE order_date IS NOT NULL 
+GROUP BY DATE_TRUNC('month', order_date), TO_CHAR(order_date, 'Mon YYYY')
+ORDER BY sort_date ASC;

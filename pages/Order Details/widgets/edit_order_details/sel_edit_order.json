@@ -2,9 +2,9 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 6,
+  "bottomRow": 7,
   "boxShadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( Tabs1.selectedTab === 'Active Orders' ? Table1.selectedRow.order_no : tbl_completed_orders.selectedRow.order_no))(sel_edit_order.options, sel_edit_order.serverSideFiltering) }}",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( Table1.selectedRow.order_no))(sel_edit_order.options, sel_edit_order.serverSideFiltering) }}",
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
@@ -58,7 +58,7 @@
   "rightColumn": 13,
   "serverSideFiltering": false,
   "sourceData": "{{Tabs1.selectedTab === 'Completed Order' ? get_completed_dropdown_orders.data : get_dropdown_orders.data}}",
-  "topRow": 0,
+  "topRow": 1,
   "type": "SELECT_WIDGET",
   "version": 1,
   "widgetId": "ryyp279t73",
