@@ -1,0 +1,35 @@
+WITH PendingShipments AS (
+    SELECT 
+        si.order_no, 
+        SUM(si.target_qty) AS needed_for_shipments,
+        -- THIS IS THE NEW MAGIC: It lists each shipment and its specific quantity!
+        STRING_AGG(s.shipment_no || ' (' || si.target_qty || ' pcs)', '  |  ') AS shipment_breakdown
+    FROM shipment_items si
+    JOIN shipments s ON si.shipment_id = s.id
+    WHERE s.status = 'Pending'
+    GROUP BY si.order_no
+),
+FloorQueue AS (
+    SELECT order_no, SUM(target_qty) AS already_pushed
+    FROM work_orders
+    GROUP BY order_no
+)
+SELECT 
+    p.order_no,
+    CONCAT_WS(' ', eo.item_size, eo.color, eo.logo, eo.folding_type) AS item_details,
+    p.needed_for_shipments,
+    
+    -- Exposing the new breakdown column to Appsmith
+    p.shipment_breakdown, 
+    
+    eo.ordered_qty AS total_master_order,
+    COALESCE(eo.produced_qty, 0) AS already_printed,
+    GREATEST(0, eo.ordered_qty - COALESCE(eo.produced_qty, 0)) AS physical_balance,
+    COALESCE(fq.already_pushed, 0) AS pushed_to_floor,
+    GREATEST(0, (eo.ordered_qty - COALESCE(eo.produced_qty, 0)) - COALESCE(fq.already_pushed, 0)) AS safe_to_push
+    
+FROM PendingShipments p
+JOIN export_orders eo ON p.order_no = eo.order_no
+LEFT JOIN FloorQueue fq ON p.order_no = fq.order_no
+WHERE (eo.ordered_qty - COALESCE(eo.produced_qty, 0)) > 0
+ORDER BY p.order_no ASC;

@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "69ac43766d6d6f3594d1d6ed_888bb630-0c20-442d-a9c9-bac425b68d1a",
-  "id": "Order Details_Query1",
+  "gitSyncId": "69ba3b2105a17f65449e0341_d57da94b-b7f6-4ff5-9940-d6d97841e870",
+  "id": "Order Details_get_work_orders",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "TRUNCATE TABLE work_orders RESTART IDENTITY;",
+      "body": "SELECT \n    id,\n    order_no,\n    item_details,\n    target_qty,\n    status,\n    TO_CHAR(created_at, 'DD/MM/YYYY HH12:MI AM') AS time_pushed\nFROM work_orders\nORDER BY id DESC; -- Shows the newest work orders at the very top!",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -23,9 +23,9 @@
       "pluginId": "postgres-plugin"
     },
     "dynamicBindingPathList": [],
-    "name": "Query1",
+    "name": "get_work_orders",
     "pageId": "Order Details",
-    "runBehaviour": "MANUAL",
-    "userSetOnLoad": false
+    "runBehaviour": "AUTOMATIC",
+    "userSetOnLoad": true
   }
 }
