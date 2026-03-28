@@ -219,7 +219,7 @@
   "mobileTopRow": 10,
   "needsErrorInfo": false,
   "oddRowColor": "#b4af9c",
-  "onRowSelected": "{{ \n  resetWidget('sel_edit_order', true).then(() => {\n    showModal('edit_order_details');\n  }) \n}}",
+  "onRowSelected": "{{ \n  storeValue('locked_order_no', Table1.selectedRow.order_no).then(() => {\n    resetWidget('sel_edit_order', true).then(() => {\n      showModal('edit_order_details');\n    });\n  });\n}}",
   "originalBottomRow": 110,
   "originalTopRow": 29,
   "parentColumnSpace": 20.25,
