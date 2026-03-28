@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO order_logs (order_no, log_date, activity_type, qty)\nVALUES (\n    '{{sel_edit_order.selectedOptionValue}}', \n    '{{ moment(prod_date.selectedDate).format('YYYY-MM-DD') }}', \n    'Produced', \n    {{prod_qty.text || 0}}\n);\n\nUPDATE export_orders\nSET produced_qty = COALESCE(produced_qty, 0) + {{prod_qty.text || 0}}\nWHERE order_no = '{{sel_edit_order.selectedOptionValue}}';",
+      "body": "-- Step 1: Keep your exact historical log (Do not change this!)\nINSERT INTO order_logs (order_no, log_date, activity_type, qty)\nVALUES (\n    '{{sel_edit_order.selectedOptionValue}}', \n    '{{ moment(prod_date.selectedDate).format('YYYY-MM-DD') }}', \n    'Produced', \n    {{prod_qty.text || 0}}\n);\n\n-- Step 2: Keep your exact master stock update\nUPDATE export_orders\nSET produced_qty = COALESCE(produced_qty, 0) + {{prod_qty.text || 0}}\nWHERE order_no = '{{sel_edit_order.selectedOptionValue}}';\n\n-- Step 3: NEW - Subtract the finished quantity from the Android Tablet queue\nUPDATE work_orders\nSET target_qty = target_qty - {{prod_qty.text || 0}}\nWHERE order_no = '{{sel_edit_order.selectedOptionValue}}' \n  AND status = 'Not Started';\n\n-- Step 4: NEW - Housekeeping (Erase the order from the tablet if it hits 0)\nDELETE FROM work_orders \nWHERE target_qty <= 0;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

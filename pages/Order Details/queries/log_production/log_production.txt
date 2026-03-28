@@ -1,3 +1,4 @@
+-- Step 1: Keep your exact historical log (Do not change this!)
 INSERT INTO order_logs (order_no, log_date, activity_type, qty)
 VALUES (
     '{{sel_edit_order.selectedOptionValue}}', 
@@ -6,6 +7,17 @@ VALUES (
     {{prod_qty.text || 0}}
 );
 
+-- Step 2: Keep your exact master stock update
 UPDATE export_orders
 SET produced_qty = COALESCE(produced_qty, 0) + {{prod_qty.text || 0}}
 WHERE order_no = '{{sel_edit_order.selectedOptionValue}}';
+
+-- Step 3: NEW - Subtract the finished quantity from the Android Tablet queue
+UPDATE work_orders
+SET target_qty = target_qty - {{prod_qty.text || 0}}
+WHERE order_no = '{{sel_edit_order.selectedOptionValue}}' 
+  AND status = 'Not Started';
+
+-- Step 4: NEW - Housekeeping (Erase the order from the tablet if it hits 0)
+DELETE FROM work_orders 
+WHERE target_qty <= 0;
