@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "TRUNCATE TABLE work_orders RESTART IDENTITY;",
+      "body": "CREATE TABLE production_logs (\n    id SERIAL PRIMARY KEY,\n    order_no VARCHAR(50) NOT NULL,\n    qty_logged INT NOT NULL,\n    log_type VARCHAR(20), -- 'Full' or 'Partial'\n    status VARCHAR(20) DEFAULT 'Pending', -- 'Pending', 'Approved', or 'Rejected'\n    logged_by VARCHAR(50) DEFAULT 'Tablet', -- To track who entered it\n    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

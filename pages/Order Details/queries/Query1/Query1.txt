@@ -1,1 +1,9 @@
-TRUNCATE TABLE work_orders RESTART IDENTITY;
+CREATE TABLE production_logs (
+    id SERIAL PRIMARY KEY,
+    order_no VARCHAR(50) NOT NULL,
+    qty_logged INT NOT NULL,
+    log_type VARCHAR(20), -- 'Full' or 'Partial'
+    status VARCHAR(20) DEFAULT 'Pending', -- 'Pending', 'Approved', or 'Rejected'
+    logged_by VARCHAR(50) DEFAULT 'Tablet', -- To track who entered it
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
