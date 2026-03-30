@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "WITH updated AS (\n    -- First, try to add the quantity to an existing 'Not Started' order\n    UPDATE work_orders \n    SET target_qty = target_qty + {{tbl_production_plan.triggeredRow.safe_to_push}}\n    WHERE order_no = '{{tbl_production_plan.triggeredRow.order_no}}'\n      AND status = 'Not Started'\n    RETURNING *\n)\n-- If nothing was updated (meaning it doesn't exist), create a brand new one!\nINSERT INTO work_orders (order_no, item_details, target_qty)\nSELECT \n    '{{tbl_production_plan.triggeredRow.order_no}}', \n    '{{tbl_production_plan.triggeredRow.item_details}}', \n    {{tbl_production_plan.triggeredRow.safe_to_push}}\nWHERE NOT EXISTS (SELECT * FROM updated);",
+      "body": "WITH updated AS (\n    -- Try to add the buffered quantity to an existing 'Not Started' order\n    UPDATE work_orders \n    SET target_qty = target_qty + {{ Math.ceil(tbl_production_plan.triggeredRow.safe_to_push * 1.08) }}\n    WHERE order_no = '{{tbl_production_plan.triggeredRow.order_no}}'\n      AND status = 'Not Started'\n    RETURNING *\n)\n-- If nothing was updated, create a brand new one with the 8% buffer!\nINSERT INTO work_orders (order_no, item_details, target_qty)\nSELECT \n    '{{tbl_production_plan.triggeredRow.order_no}}', \n    '{{tbl_production_plan.triggeredRow.item_details}}', \n    {{ Math.ceil(tbl_production_plan.triggeredRow.safe_to_push * 1.08) }}\nWHERE NOT EXISTS (SELECT * FROM updated);",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

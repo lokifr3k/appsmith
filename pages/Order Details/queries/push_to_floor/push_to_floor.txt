@@ -1,15 +1,15 @@
 WITH updated AS (
-    -- First, try to add the quantity to an existing 'Not Started' order
+    -- Try to add the buffered quantity to an existing 'Not Started' order
     UPDATE work_orders 
-    SET target_qty = target_qty + {{tbl_production_plan.triggeredRow.safe_to_push}}
+    SET target_qty = target_qty + {{ Math.ceil(tbl_production_plan.triggeredRow.safe_to_push * 1.08) }}
     WHERE order_no = '{{tbl_production_plan.triggeredRow.order_no}}'
       AND status = 'Not Started'
     RETURNING *
 )
--- If nothing was updated (meaning it doesn't exist), create a brand new one!
+-- If nothing was updated, create a brand new one with the 8% buffer!
 INSERT INTO work_orders (order_no, item_details, target_qty)
 SELECT 
     '{{tbl_production_plan.triggeredRow.order_no}}', 
     '{{tbl_production_plan.triggeredRow.item_details}}', 
-    {{tbl_production_plan.triggeredRow.safe_to_push}}
+    {{ Math.ceil(tbl_production_plan.triggeredRow.safe_to_push * 1.08) }}
 WHERE NOT EXISTS (SELECT * FROM updated);
