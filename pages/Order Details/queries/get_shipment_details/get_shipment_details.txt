@@ -28,10 +28,10 @@ FactoryMath AS (
 )
 SELECT 
     order_no,
-    item_size,
-    color,
-    folding_type,
-    logo,
+    
+    -- THIS IS THE NEW MERGE LINE!
+    CONCAT_WS(' ', item_size, color, logo, folding_type) AS item_description,
+    
     cartons,
     target_qty AS required_pcs,
     
@@ -56,4 +56,4 @@ SELECT
     END AS action_status
 
 FROM FactoryMath
-ORDER BY order_no ASC;  -- <-- The magic sorting line!
+ORDER BY order_no ASC;

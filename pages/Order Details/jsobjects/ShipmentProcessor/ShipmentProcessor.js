@@ -23,23 +23,30 @@ export default {
             // 5. Grab all the items currently sitting in your Details table
             let items = tbl_shipment_details.tableData;
             
-            // 6. Loop through every single order and deduct the factory stock!
+            // 6. Loop through every single order: Deduct stock AND log invoice!
             for (let i = 0; i < items.length; i++) {
-                await update_sent_qty.run({
+                await update_shipped_order.run({
                     order_no: items[i].order_no,
                     qty: items[i].required_pcs 
                 });
             }
             
-            // 7. Refresh the dashboard so the tables update instantly
+            // 7. NEW: Run the sweep to auto-archive fully shipped orders
+            await mark_orders_completed.run();
+            
+            // 8. Refresh the dashboard so all tables update instantly
             await get_shipments.run();
             await get_shipment_details.run();
+            await get_active_orders.run(); // Makes the archived orders vanish!
             
-            // 8. Clean up the UI
-						closeModal('mod_confirm_dispatch');
+            // Note: If you have a query named get_completed_orders, uncomment the line below:
+            // await get_completed_orders.run(); 
+            
+            // 9. Clean up the UI
+            closeModal('mod_confirm_dispatch');
             resetWidget('inp_invoice_no', true);
             resetWidget('dat_invoice_date', true);
-            showAlert('Shipment Dispatched & Stock Updated Successfully!', 'success');
+            showAlert('Shipment Dispatched, Invoices Logged, & Orders Archived!', 'success');
             
         } catch (error) {
             showAlert('Error processing shipment: ' + error.message, 'error');
