@@ -28,7 +28,7 @@
   "mobileRightColumn": 40,
   "mobileTopRow": 11,
   "needsErrorInfo": false,
-  "onClick": "{{showModal(modal_production.name);}}",
+  "onClick": "{{get_floor_queue.run().then(() => {\n  showModal(modal_production.name);\n});}}",
   "originalBottomRow": 20,
   "originalTopRow": 13,
   "parentColumnSpace": 12.3125,
