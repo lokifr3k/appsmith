@@ -2,7 +2,7 @@
   "accentColor": "{{appsmith.theme.colors.primaryColor}}",
   "animateLoading": true,
   "borderColor": "#E0DEDE",
-  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "borderRadius": "1.5rem",
   "borderWidth": "1",
   "bottomRow": 46,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
@@ -32,15 +32,19 @@
     }
   },
   "columnOrder": [
-    "id",
     "order_no",
     "item_details",
+    "id",
     "target_qty",
-    "status",
-    "time_pushed"
+    "time_pushed",
+    "status"
   ],
-  "columnUpdatedAt": 1775559072775,
-  "columnWidthMap": {},
+  "columnUpdatedAt": 1775568035377,
+  "columnWidthMap": {
+    "item_details": 350,
+    "order_no": 67,
+    "target_qty": 116
+  },
   "customIsLoading": false,
   "customIsLoadingValue": "",
   "defaultPageSize": 0,
@@ -52,9 +56,6 @@
   "dynamicBindingPathList": [
     {
       "key": "accentColor"
-    },
-    {
-      "key": "borderRadius"
     },
     {
       "key": "boxShadow"
@@ -86,7 +87,11 @@
       "key": "tableData"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onRowSelected"
+    }
+  ],
   "enableClientSideSearch": true,
   "endOfData": false,
   "flexVerticalAlignment": "start",
@@ -108,6 +113,7 @@
   "mobileRightColumn": 50,
   "mobileTopRow": 15,
   "needsErrorInfo": false,
+  "onRowSelected": "{{showModal(modal_order_action.name);}}",
   "originalBottomRow": 81,
   "originalTopRow": 61,
   "parentColumnSpace": 18.96875,
@@ -134,7 +140,7 @@
       "isDiscardVisible": true,
       "isEditable": false,
       "isSaveVisible": true,
-      "isVisible": true,
+      "isVisible": false,
       "label": "id",
       "notation": "standard",
       "originalId": "id",
@@ -166,7 +172,7 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "item_details",
+      "label": "Item",
       "notation": "standard",
       "originalId": "item_details",
       "sticky": "",
@@ -197,7 +203,7 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "order_no",
+      "label": "No",
       "notation": "standard",
       "originalId": "order_no",
       "sticky": "",
@@ -227,7 +233,7 @@
       "isDiscardVisible": true,
       "isEditable": false,
       "isSaveVisible": true,
-      "isVisible": true,
+      "isVisible": false,
       "label": "status",
       "notation": "standard",
       "originalId": "status",
@@ -259,7 +265,7 @@
       "isEditable": false,
       "isSaveVisible": true,
       "isVisible": true,
-      "label": "target_qty",
+      "label": "Qty",
       "notation": "standard",
       "originalId": "target_qty",
       "sticky": "",
@@ -289,7 +295,7 @@
       "isDiscardVisible": true,
       "isEditable": false,
       "isSaveVisible": true,
-      "isVisible": true,
+      "isVisible": false,
       "label": "time_pushed",
       "notation": "standard",
       "originalId": "time_pushed",
