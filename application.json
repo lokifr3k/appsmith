@@ -1,7 +1,7 @@
 {
   "appIsExample": false,
   "appLayout": {
-    "type": "FLUID"
+    "type": "TABLET"
   },
   "applicationDetail": {
     "navigationSetting": {
@@ -33,10 +33,14 @@
     {
       "id": "Order Details",
       "isDefault": true
+    },
+    {
+      "id": "Worker Tablet",
+      "isDefault": false
     }
   ],
   "unpublishedAppLayout": {
-    "type": "FLUID"
+    "type": "TABLET"
   },
   "unpublishedApplicationDetail": {
     "navigationSetting": {

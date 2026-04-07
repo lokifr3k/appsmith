@@ -1,9 +1,9 @@
-CREATE TABLE production_logs (
+CREATE TABLE IF NOT EXISTS production_logs (
     id SERIAL PRIMARY KEY,
-    order_no VARCHAR(50) NOT NULL,
+    order_no VARCHAR(50) REFERENCES export_orders(order_no),
     qty_logged INT NOT NULL,
-    log_type VARCHAR(20), -- 'Full' or 'Partial'
-    status VARCHAR(20) DEFAULT 'Pending', -- 'Pending', 'Approved', or 'Rejected'
-    logged_by VARCHAR(50) DEFAULT 'Tablet', -- To track who entered it
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    log_type VARCHAR(10) DEFAULT 'Full',  -- 'Full' or 'Partial'
+    logged_at TIMESTAMP DEFAULT NOW(),
+    status VARCHAR(20) DEFAULT 'Pending', -- 'Pending', 'Approved', 'Rejected'
+    rejection_note TEXT
 );

@@ -1,0 +1,10 @@
+SELECT 
+    pl.id,
+    pl.order_no,
+    pl.qty_logged,
+    pl.log_type,
+    TO_CHAR(pl.logged_at, 'DD/MM HH12:MI AM') AS submitted_at,
+    pl.status
+FROM production_logs pl
+WHERE pl.status = 'Pending'
+ORDER BY pl.logged_at DESC;

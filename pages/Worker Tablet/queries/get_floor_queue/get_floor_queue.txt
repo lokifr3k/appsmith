@@ -1,0 +1,10 @@
+SELECT 
+    id,
+    order_no,
+    item_details,
+    target_qty,
+    status,
+    TO_CHAR(created_at, 'DD/MM/YYYY HH12:MI AM') AS time_pushed
+FROM work_orders
+WHERE status = 'Not Started'
+ORDER BY id DESC;
