@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 8,
+  "bottomRow": 7,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -21,7 +21,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "jnnwpkzjs7",
-  "leftColumn": 18,
+  "leftColumn": 21,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -30,8 +30,8 @@
   "mobileRightColumn": 39,
   "mobileTopRow": 9,
   "needsErrorInfo": false,
-  "originalBottomRow": 8,
-  "originalTopRow": 3,
+  "originalBottomRow": 7,
+  "originalTopRow": 2,
   "overflow": "NONE",
   "parentColumnSpace": 12.3125,
   "parentId": "0",
@@ -42,11 +42,11 @@
   "shouldTruncate": false,
   "text": "FACTORY FLOOR",
   "textAlign": "LEFT",
-  "textColor": "#231F20",
-  "topRow": 3,
+  "textColor": "#18181b",
+  "topRow": 2,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
   "widgetId": "wxkvzzvkp9",
-  "widgetName": "Text1"
+  "widgetName": "txt_header"
 }
