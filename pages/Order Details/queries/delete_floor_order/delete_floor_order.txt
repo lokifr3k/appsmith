@@ -1,0 +1,7 @@
+-- Step 1: Delete from production_logs if exists
+DELETE FROM production_logs
+WHERE order_no = '{{tbl_approvals.selectedRow.order_no}}';
+
+-- Step 2: Delete from work_orders
+DELETE FROM work_orders
+WHERE id = {{tbl_approvals.selectedRow.id}};

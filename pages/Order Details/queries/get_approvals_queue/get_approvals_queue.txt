@@ -1,0 +1,16 @@
+SELECT 
+    w.id,
+    w.order_no,
+    w.item_details,
+    w.target_qty,
+    w.status,
+    TO_CHAR(w.created_at, 'DD/MM/YYYY HH12:MI AM') AS time_pushed,
+    COALESCE(p.id, 0) AS log_id,
+    COALESCE(p.qty_logged, 0) AS qty_logged,
+    COALESCE(p.log_type, '') AS log_type,
+    COALESCE(p.log_date, CURRENT_DATE) AS log_date
+FROM work_orders w
+LEFT JOIN production_logs p 
+    ON w.order_no = p.order_no 
+WHERE p.status = 'Pending' OR p.id IS NULL
+ORDER BY w.created_at DESC;

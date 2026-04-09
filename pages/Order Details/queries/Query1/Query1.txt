@@ -1,9 +1,16 @@
-CREATE TABLE IF NOT EXISTS production_logs (
-    id SERIAL PRIMARY KEY,
-    order_no VARCHAR(50) REFERENCES export_orders(order_no),
-    qty_logged INT NOT NULL,
-    log_type VARCHAR(10) DEFAULT 'Full',  -- 'Full' or 'Partial'
-    logged_at TIMESTAMP DEFAULT NOW(),
-    status VARCHAR(20) DEFAULT 'Pending', -- 'Pending', 'Approved', 'Rejected'
-    rejection_note TEXT
-);
+-- Step 1
+UPDATE export_orders
+SET produced_qty = COALESCE(produced_qty, 0) + 9
+WHERE order_no = '1471';
+
+-- Step 2
+INSERT INTO order_logs (order_no, log_date, activity_type, qty)
+VALUES ('1471', '2026-04-08'::date, 'Produced', 9);
+
+-- Step 3
+DELETE FROM work_orders
+WHERE order_no = '1471';
+
+-- Step 4
+DELETE FROM production_logs
+WHERE order_no = '1471';

@@ -1,0 +1,21 @@
+-- Step 1: Add qty to master produced_qty
+UPDATE export_orders
+SET produced_qty = COALESCE(produced_qty, 0) + {{tbl_approvals.selectedRow.qty_logged}}
+WHERE order_no = '{{tbl_approvals.selectedRow.order_no}}';
+
+-- Step 2: Insert into order_logs
+INSERT INTO order_logs (order_no, log_date, activity_type, qty)
+VALUES (
+    '{{tbl_approvals.selectedRow.order_no}}',
+    '{{tbl_approvals.selectedRow.log_date}}'::date,
+    'Produced',
+    {{tbl_approvals.selectedRow.qty_logged}}
+);
+
+-- Step 3: Delete from work_orders
+DELETE FROM work_orders
+WHERE order_no = '{{tbl_approvals.selectedRow.order_no}}';
+
+-- Step 4: Delete from production_logs
+DELETE FROM production_logs
+WHERE order_no = '{{tbl_approvals.selectedRow.order_no}}';

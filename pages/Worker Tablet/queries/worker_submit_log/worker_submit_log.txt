@@ -1,7 +1,0 @@
-INSERT INTO production_logs (order_no, qty_logged, log_type, log_date)
-VALUES (
-    '{{tbl_floor_queue.selectedRow.order_no}}',
-    {{inp_worker_qty.text}},
-    '{{sel_log_type.selectedOptionValue}}',
-    CURRENT_DATE
-);

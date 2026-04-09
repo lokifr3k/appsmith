@@ -14,7 +14,10 @@
           "name": "color"
         },
         {
-          "name": "balanceQty"
+          "name": "orderedQty"
+        },
+        {
+          "name": "producedQty"
         }
       ],
       "paginationType": "NONE",

@@ -33,10 +33,6 @@
     {
       "id": "Order Details",
       "isDefault": true
-    },
-    {
-      "id": "Worker Tablet",
-      "isDefault": false
     }
   ],
   "unpublishedAppLayout": {

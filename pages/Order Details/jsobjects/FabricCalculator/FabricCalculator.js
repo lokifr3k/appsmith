@@ -22,16 +22,17 @@ export default {
         }
     },
 
-    calculateMeters: (size, color, balanceQty) => {
-        let details = FabricCalculator.getDetails(size, color);
-        
-        if (details.pcs === 0 || balanceQty <= 0) return 0;
-        
-        let targetPcs = Math.ceil(balanceQty * 1.08); 
-        let meters = targetPcs / details.pcs; 
-        
-        return parseFloat(meters.toFixed(2)); 
-    },
+    calculateMeters: (size, color, orderedQty, producedQty) => {
+    let details = FabricCalculator.getDetails(size, color);
+    let remaining = orderedQty - producedQty;
+    
+    if (details.pcs === 0 || remaining <= 0) return 0;
+    
+    let targetPcs = Math.ceil(remaining * 1.08);
+    let meters = targetPcs / details.pcs;
+    
+    return parseFloat(meters.toFixed(2));
+},
 
     getFabricTotals: () => {
         let orders = get_active_orders.data || [];
