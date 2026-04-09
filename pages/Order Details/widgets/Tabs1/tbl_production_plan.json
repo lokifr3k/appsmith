@@ -48,11 +48,13 @@
   "columnWidthMap": {
     "already_printed": 120,
     "already_produced": 121,
-    "needed_for_shipments": 142,
+    "item_details": 289,
+    "needed_for_shipments": 139,
     "order_no": 64,
     "physical_balance": 155,
     "pushed_to_floor": 113,
     "remaining_balance": 157,
+    "shipment_breakdown": 308,
     "total_master_order": 102
   },
   "customIsLoading": false,

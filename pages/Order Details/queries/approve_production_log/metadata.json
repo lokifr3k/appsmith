@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "-- Step 1: Add qty to master produced_qty\nUPDATE export_orders\nSET produced_qty = COALESCE(produced_qty, 0) + {{tbl_approvals.selectedRow.qty_logged}}\nWHERE order_no = '{{tbl_approvals.selectedRow.order_no}}';\n\n-- Step 2: Insert into order_logs\nINSERT INTO order_logs (order_no, log_date, activity_type, qty)\nVALUES (\n    '{{tbl_approvals.selectedRow.order_no}}',\n    '{{tbl_approvals.selectedRow.log_date}}'::date,\n    'Produced',\n    {{tbl_approvals.selectedRow.qty_logged}}\n);\n\n-- Step 3: Delete from work_orders\nDELETE FROM work_orders\nWHERE order_no = '{{tbl_approvals.selectedRow.order_no}}';\n\n-- Step 4: Delete from production_logs\nDELETE FROM production_logs\nWHERE order_no = '{{tbl_approvals.selectedRow.order_no}}';",
+      "body": "-- Step 1: Add qty to master produced_qty\nUPDATE export_orders\nSET produced_qty = COALESCE(produced_qty, 0) + {{tbl_approvals.triggeredRow.qty_logged}}\nWHERE order_no = '{{tbl_approvals.triggeredRow.order_no}}';\n\n-- Step 2: Insert into order_logs\nINSERT INTO order_logs (order_no, log_date, activity_type, qty)\nVALUES (\n    '{{tbl_approvals.triggeredRow.order_no}}',\n    '{{tbl_approvals.triggeredRow.log_date}}'::date,\n    'Produced',\n    {{tbl_approvals.triggeredRow.qty_logged}}\n);\n\n-- Step 3: Delete from work_orders\nDELETE FROM work_orders\nWHERE order_no = '{{tbl_approvals.triggeredRow.order_no}}';\n\n-- Step 4: Delete from production_logs\nDELETE FROM production_logs\nWHERE order_no = '{{tbl_approvals.triggeredRow.order_no}}';",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

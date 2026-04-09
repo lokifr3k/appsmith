@@ -43,12 +43,12 @@
     "customColumn1",
     "EditActions1"
   ],
-  "columnUpdatedAt": 1775192349135,
+  "columnUpdatedAt": 1775716499785,
   "columnWidthMap": {
     "cartons": 60,
     "color": 98,
     "folding_type": 98,
-    "item_description": 237,
+    "item_description": 342,
     "item_size": 76,
     "logo": 166,
     "order_no": 68,
@@ -202,7 +202,7 @@
       "isEditable": false,
       "isSaveDisabled": "{{tbl_shipment_details.processedTableData.map((currentRow, currentIndex) => ( !tbl_shipment_details.updatedRowIndices.includes(currentIndex)))}}",
       "isSaveVisible": true,
-      "isVisible": true,
+      "isVisible": false,
       "label": "Save / Discard",
       "notation": "standard",
       "originalId": "EditActions1",
