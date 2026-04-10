@@ -2,7 +2,7 @@ WITH updated AS (
     UPDATE work_orders 
     SET 
         target_qty = target_qty + {{ Math.ceil(tbl_production_plan.triggeredRow.safe_to_push * 1.08) }},
-        fabric_meters = fabric_meters + {{ FabricCalculator.calculateMeters(tbl_production_plan.triggeredRow.item_size, tbl_production_plan.triggeredRow.color, tbl_production_plan.triggeredRow.safe_to_push, 0) }}
+        fabric_meters = ROUND(CAST(fabric_meters AS numeric) + CAST({{ FabricCalculator.calculateMeters(get_order_for_push.data[0]?.item_size, get_order_for_push.data[0]?.color, tbl_production_plan.triggeredRow.safe_to_push, 0) }} AS numeric), 2)
     WHERE order_no = '{{tbl_production_plan.triggeredRow.order_no}}'
       AND status = 'Not Started'
     RETURNING *
@@ -12,5 +12,6 @@ SELECT
     '{{tbl_production_plan.triggeredRow.order_no}}', 
     '{{tbl_production_plan.triggeredRow.item_details}}', 
     {{ Math.ceil(tbl_production_plan.triggeredRow.safe_to_push * 1.08) }},
-    {{ FabricCalculator.calculateMeters(tbl_production_plan.triggeredRow.item_size, tbl_production_plan.triggeredRow.color, tbl_production_plan.triggeredRow.safe_to_push, 0) }}
+    {{ FabricCalculator.calculateMeters(get_order_for_push.data[0]?.item_size, get_order_for_push.data[0]?.color, tbl_production_plan.triggeredRow.safe_to_push, 0) }}
+FROM (SELECT 1) t
 WHERE NOT EXISTS (SELECT * FROM updated);

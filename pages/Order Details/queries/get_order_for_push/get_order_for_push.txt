@@ -1,0 +1,4 @@
+SELECT item_size, color
+FROM export_orders
+WHERE order_no = '{{tbl_production_plan.triggeredRow.order_no}}'
+LIMIT 1;
