@@ -1,15 +1,16 @@
 WITH updated AS (
-    -- Try to add the buffered quantity to an existing 'Not Started' order
     UPDATE work_orders 
-    SET target_qty = target_qty + {{ Math.ceil(tbl_production_plan.triggeredRow.safe_to_push * 1.08) }}
+    SET 
+        target_qty = target_qty + {{ Math.ceil(tbl_production_plan.triggeredRow.safe_to_push * 1.08) }},
+        fabric_meters = fabric_meters + {{ FabricCalculator.calculateMeters(tbl_production_plan.triggeredRow.item_size, tbl_production_plan.triggeredRow.color, tbl_production_plan.triggeredRow.safe_to_push, 0) }}
     WHERE order_no = '{{tbl_production_plan.triggeredRow.order_no}}'
       AND status = 'Not Started'
     RETURNING *
 )
--- If nothing was updated, create a brand new one with the 8% buffer!
-INSERT INTO work_orders (order_no, item_details, target_qty)
+INSERT INTO work_orders (order_no, item_details, target_qty, fabric_meters)
 SELECT 
     '{{tbl_production_plan.triggeredRow.order_no}}', 
     '{{tbl_production_plan.triggeredRow.item_details}}', 
-    {{ Math.ceil(tbl_production_plan.triggeredRow.safe_to_push * 1.08) }}
+    {{ Math.ceil(tbl_production_plan.triggeredRow.safe_to_push * 1.08) }},
+    {{ FabricCalculator.calculateMeters(tbl_production_plan.triggeredRow.item_size, tbl_production_plan.triggeredRow.color, tbl_production_plan.triggeredRow.safe_to_push, 0) }}
 WHERE NOT EXISTS (SELECT * FROM updated);

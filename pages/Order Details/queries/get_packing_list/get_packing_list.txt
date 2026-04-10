@@ -1,27 +1,27 @@
 WITH RankedCartons AS (
-    SELECT 
-        si.order_no,
-        CONCAT_WS(' ', eo.item_size, eo.color, eo.logo, eo.folding_type) AS item_description,
-        eo.item_size,
-        si.cartons,
-        si.target_qty AS qty,
-        -- Extract width and height from size for proper numeric sorting
-        SPLIT_PART(eo.item_size, 'X', 1)::numeric AS size_width,
-        SPLIT_PART(eo.item_size, 'X', 2)::numeric AS size_height
-    FROM shipment_items si
-    LEFT JOIN export_orders eo ON si.order_no = eo.order_no
-    WHERE si.shipment_id = {{tbl_shipments.selectedRow.id || 0}}
+	SELECT 
+	si.order_no,
+	CONCAT_WS(' ', eo.item_size, 'CM', eo.color, eo.logo, eo.folding_type) AS item_description,
+	eo.item_size,
+	si.cartons,
+	si.target_qty AS qty,
+	-- Extract width and height from size for proper numeric sorting
+	SPLIT_PART(eo.item_size, 'X', 1)::numeric AS size_width,
+	SPLIT_PART(eo.item_size, 'X', 2)::numeric AS size_height
+	FROM shipment_items si
+	LEFT JOIN export_orders eo ON si.order_no = eo.order_no
+	WHERE si.shipment_id = {{tbl_shipments.selectedRow.id || 0}}
 ),
 OrderedCartons AS (
-    SELECT *,
-        COALESCE(SUM(cartons::numeric) OVER (
-            ORDER BY size_width ASC, size_height ASC, order_no
-            ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING
-        ), 0) + 1 AS start_carton,
-        SUM(cartons::numeric) OVER (
-            ORDER BY size_width ASC, size_height ASC, order_no
-        ) AS end_carton
-    FROM RankedCartons
+	SELECT *,
+	COALESCE(SUM(cartons::numeric) OVER (
+		ORDER BY size_width ASC, size_height ASC, order_no
+		ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING
+	), 0) + 1 AS start_carton,
+	SUM(cartons::numeric) OVER (
+		ORDER BY size_width ASC, size_height ASC, order_no
+	) AS end_carton
+	FROM RankedCartons
 )
 SELECT 
     order_no,
