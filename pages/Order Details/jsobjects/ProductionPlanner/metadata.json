@@ -1,0 +1,11 @@
+{
+  "gitSyncId": "69ba3b2105a17f65449e0341_a0d0e2fc-148d-4d20-a9ed-43b14589e459",
+  "id": "Order Details_ProductionPlanner",
+  "unpublishedCollection": {
+    "name": "ProductionPlanner",
+    "pageId": "Order Details",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": []
+  }
+}

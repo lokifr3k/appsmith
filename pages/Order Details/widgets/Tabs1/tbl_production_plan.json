@@ -275,7 +275,7 @@
       "label": "Action",
       "labelColor": "#FFFFFF",
       "notation": "standard",
-      "onClick": "{{get_order_for_push.run().then(() => {\n  push_to_floor.run();\n  get_work_orders.run();\n  get_production_plan.run();\n});}}",
+      "onClick": "{{ProductionPlanner.pushToFloor();}}",
       "originalId": "customColumn1",
       "sticky": "",
       "textSize": "0.875rem",
