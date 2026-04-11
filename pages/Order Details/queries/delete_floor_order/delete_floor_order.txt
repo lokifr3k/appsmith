@@ -1,7 +1,9 @@
--- Step 1: Delete from production_logs if exists
+-- Step 1: Delete from production_logs
 DELETE FROM production_logs
-WHERE order_no = '{{tbl_approvals.triggeredRow.order_no}}';
+WHERE order_no = '{{tbl_approvals.triggeredRow.order_no}}'
+AND log_type = '{{tbl_approvals.triggeredRow.log_type}}';
 
--- Step 2: Delete from work_orders
+-- Step 2: Delete from work_orders ONLY if NOT a folding log
 DELETE FROM work_orders
-WHERE order_no = '{{tbl_approvals.triggeredRow.order_no}}';
+WHERE order_no = '{{tbl_approvals.triggeredRow.order_no}}'
+AND '{{tbl_approvals.triggeredRow.log_type}}' != 'Folded';

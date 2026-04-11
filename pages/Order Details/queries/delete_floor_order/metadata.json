@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "-- Step 1: Delete from production_logs if exists\nDELETE FROM production_logs\nWHERE order_no = '{{tbl_approvals.triggeredRow.order_no}}';\n\n-- Step 2: Delete from work_orders\nDELETE FROM work_orders\nWHERE order_no = '{{tbl_approvals.triggeredRow.order_no}}';",
+      "body": "-- Step 1: Delete from production_logs\nDELETE FROM production_logs\nWHERE order_no = '{{tbl_approvals.triggeredRow.order_no}}'\nAND log_type = '{{tbl_approvals.triggeredRow.log_type}}';\n\n-- Step 2: Delete from work_orders ONLY if NOT a folding log\nDELETE FROM work_orders\nWHERE order_no = '{{tbl_approvals.triggeredRow.order_no}}'\nAND '{{tbl_approvals.triggeredRow.log_type}}' != 'Folded';",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

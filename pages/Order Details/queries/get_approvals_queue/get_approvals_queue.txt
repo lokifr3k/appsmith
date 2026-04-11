@@ -1,3 +1,4 @@
+-- Section 1: Work orders queue (Production logs)
 SELECT 
     w.id,
     w.order_no,
@@ -11,6 +12,27 @@ SELECT
     COALESCE(p.log_date, CURRENT_DATE) AS log_date
 FROM work_orders w
 LEFT JOIN production_logs p 
-    ON w.order_no = p.order_no 
+    ON w.order_no = p.order_no
+    AND p.log_type != 'Folded'
 WHERE p.status = 'Pending' OR p.id IS NULL
-ORDER BY w.created_at DESC;
+
+UNION ALL
+
+-- Section 2: Folding logs (no work_orders entry)
+SELECT 
+    0 AS id,
+    p.order_no,
+    CONCAT_WS(' ', eo.item_size, eo.color, eo.logo, eo.folding_type) AS item_details,
+    p.qty_logged AS target_qty,
+    'Folding Approval' AS status,
+    TO_CHAR(p.logged_at, 'DD/MM/YYYY HH12:MI AM') AS time_pushed,
+    p.id AS log_id,
+    p.qty_logged,
+    p.log_type,
+    COALESCE(p.log_date, CURRENT_DATE) AS log_date
+FROM production_logs p
+JOIN export_orders eo ON p.order_no = eo.order_no
+WHERE p.log_type = 'Folded'
+AND p.status = 'Pending'
+
+ORDER BY time_pushed DESC;

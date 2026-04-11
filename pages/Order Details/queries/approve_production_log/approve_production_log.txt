@@ -1,21 +1,37 @@
--- Step 1: Add qty to master produced_qty
+-- Step 1: Update correct qty based on log_type
 UPDATE export_orders
-SET produced_qty = COALESCE(produced_qty, 0) + {{tbl_approvals.triggeredRow.qty_logged}}
+SET 
+  produced_qty = CASE 
+    WHEN '{{tbl_approvals.triggeredRow.log_type}}' != 'Folded' 
+    THEN COALESCE(produced_qty, 0) + {{tbl_approvals.triggeredRow.qty_logged}}
+    ELSE produced_qty 
+  END,
+  folded_qty = CASE 
+    WHEN '{{tbl_approvals.triggeredRow.log_type}}' = 'Folded' 
+    THEN COALESCE(folded_qty, 0) + {{tbl_approvals.triggeredRow.qty_logged}}
+    ELSE folded_qty 
+  END
 WHERE order_no = '{{tbl_approvals.triggeredRow.order_no}}';
 
--- Step 2: Insert into order_logs
+-- Step 2: Insert into order_logs with correct activity_type
 INSERT INTO order_logs (order_no, log_date, activity_type, qty)
 VALUES (
     '{{tbl_approvals.triggeredRow.order_no}}',
     '{{tbl_approvals.triggeredRow.log_date}}'::date,
-    'Produced',
+    CASE 
+      WHEN '{{tbl_approvals.triggeredRow.log_type}}' = 'Folded' 
+      THEN 'Folded'
+      ELSE 'Produced'
+    END,
     {{tbl_approvals.triggeredRow.qty_logged}}
 );
 
--- Step 3: Delete from work_orders
+-- Step 3: Delete from work_orders only if NOT a folding log
 DELETE FROM work_orders
-WHERE order_no = '{{tbl_approvals.triggeredRow.order_no}}';
+WHERE order_no = '{{tbl_approvals.triggeredRow.order_no}}'
+AND '{{tbl_approvals.triggeredRow.log_type}}' != 'Folded';
 
 -- Step 4: Delete from production_logs
 DELETE FROM production_logs
-WHERE order_no = '{{tbl_approvals.triggeredRow.order_no}}';
+WHERE order_no = '{{tbl_approvals.triggeredRow.order_no}}'
+AND log_type = '{{tbl_approvals.triggeredRow.log_type}}';
