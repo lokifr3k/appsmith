@@ -43,7 +43,7 @@
     "inner_box_qty",
     "EditActions1"
   ],
-  "columnUpdatedAt": 1776076948549,
+  "columnUpdatedAt": 1776234937273,
   "columnWidthMap": {},
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -178,7 +178,7 @@
       "isEditable": false,
       "isSaveDisabled": "{{tbl_item_masters.processedTableData.map((currentRow, currentIndex) => ( !tbl_item_masters.updatedRowIndices.includes(currentIndex)))}}",
       "isSaveVisible": true,
-      "isVisible": false,
+      "isVisible": true,
       "label": "Save / Discard",
       "notation": "standard",
       "onSave": "{{update_item_master.run().then(() => {\n  get_item_masters.run();\n});}}",
