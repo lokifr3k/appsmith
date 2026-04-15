@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "UPDATE item_masters\nSET fabric_width = {{tbl_item_masters.updatedRow.fabric_width}},\n    pcs_per_meter = {{tbl_item_masters.updatedRow.pcs_per_meter}},\n    pcs_per_carton = {{tbl_item_masters.updatedRow.pcs_per_carton}},\n    price_per_pc = {{tbl_item_masters.updatedRow.price_per_pc}}\nWHERE id = {{tbl_item_masters.updatedRow.id}};",
+      "body": "UPDATE item_masters\nSET fabric_width = {{tbl_item_masters.updatedRow.fabric_width}},\n    pcs_per_meter = {{tbl_item_masters.updatedRow.pcs_per_meter}},\n    pcs_per_carton = {{tbl_item_masters.updatedRow.pcs_per_carton}},\n    price_per_pc = {{tbl_item_masters.updatedRow.price_per_pc}},\n\t\tinner_box_qty = {{tbl_item_masters.updatedRow.inner_box_qty}}\nWHERE id = {{tbl_item_masters.updatedRow.id}};",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

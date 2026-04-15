@@ -54,9 +54,10 @@
     "live_status",
     "status",
     "invoice_details",
-    "id"
+    "id",
+    "packed_cartons"
   ],
-  "columnUpdatedAt": 1773827571810,
+  "columnUpdatedAt": 1776080322680,
   "columnWidthMap": {
     "balance_qty": 94,
     "color": 96,
@@ -169,6 +170,9 @@
     },
     {
       "key": "primaryColumns.folding_type.computedValue"
+    },
+    {
+      "key": "primaryColumns.packed_cartons.computedValue"
     }
   ],
   "dynamicPropertyPathList": [
@@ -793,6 +797,40 @@
       "label": "order(q)",
       "notation": "standard",
       "originalId": "ordered_qty",
+      "sticky": "",
+      "textColor": "#231f20",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "packed_cartons": {
+      "alias": "packed_cartons",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "cellBackground": "",
+      "columnType": "number",
+      "computedValue": "{{(() => { const tableData = Table1.processedTableData || []; return tableData.length > 0 ? tableData.map((currentRow, currentIndex) => (currentRow[\"packed_cartons\"])) : packed_cartons })()}}",
+      "currencyCode": "USD",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "fontStyle": "",
+      "horizontalAlignment": "CENTER",
+      "id": "packed_cartons",
+      "index": 17,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": false,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "packed_cartons",
+      "notation": "standard",
+      "originalId": "packed_cartons",
       "sticky": "",
       "textColor": "#231f20",
       "textSize": "0.875rem",
